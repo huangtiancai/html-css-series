@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>selectors</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /*类型选择器*/
+        /* All p elements are red */
+        p {
+            color:red;
+        }
+        /* All div elements are red */
+        div {
+            color:  blue;
+        }
+        /*类选择器*/
+        /* The element with the class "first" is bolded */
+        .first {
+            font-weight: bold;
+        }
+        /* All the elements with the class "done" are strike through（删去，划掉） */
+        .done {
+            text-decoration: line-through;            
+        }
+        /*ID 选择器*/
+        #polite {
+            color:crimson;
+            font-family: cursive;
+        }
+        #rude {
+            color:blue;
+            font-family: monospace;
+            text-transform: uppercase;
+        }
+        /* 所有具有"data-vegetable"属性的元素将被应用绿色的文本颜色 */
+        [data-vegetable]{
+            color: green;
+        }
+        /* 所有具有"data-vegetable"属性且属性值刚好为"liquid"的元素将被应用金色的背景颜色 */
+        [data-vegetable="liquid"]{
+            background-color: goldenrod;
+        }
+        /* 所有具有"data-vegetable"属性且属性值包含"spicy"的元素，
+        即使元素的属性中还包含其他属性值，都会被应用红色的文本颜色 */
+        [data-vegetable~="spicy"]{
+            color: darkblue;
+        }
+        [data-quantity~="10ml"]{
+            color: red;
+        }
+        /* 语言选择的经典用法 */
+        [lang|="fr"]{
+            font-weight: bold;
+        }
+        /* 具有"data-vegetable"属性含有值"not spicy"的所有元素,都变回绿色*/
+        [data-vegetable*="not spicy"]{
+            color: green;
+        }
+        /*具有"data-quantity"属性其值以"kg"结尾的所有元素*/
+        [data-quantity$=kg]{
+            font-weight: bold;/*字体加粗 定义由粗到细的字符。400 等同于 normal，而 700 等同于 bold。*/
+        }
+        /*具有属性"data-quantity"其值以"optional"开头的所有元素 */
+        [data-quantity^="optional"]{
+            opacity: 0.4; /*模糊度，不透明度:越小越模糊*/
+        }
+        /* 这些样式将在任何情况下应用于我们的链接 */
+        a {
+            color: blue;
+            font-weight: bold;
+        }
+        /* 我们想让被访问过的链接和未被访问的链接看起来一样 */
+        a:visited {
+            color: blue;
+        }
+        /*当光标悬停于链接,让链接呈现高亮并且去除下划线*/
+        a:hover {
+            color: darkred;
+            text-decoration: none;
+        }
+        /* 所有含有"href"属性并且值以"http"开始的元素，将会在其内容后增加一个箭头（去表明它是外部链接）*/
+        /*::after用来创建一个伪元素，作为已选中元素的最后一个子元素。通常会配合content属性来为该元素添加装饰内容。*/
+        [href^=http]::after{
+            content: '⤴';
+        }
+
+        /*组合器示例*/
+        /* 基本的table样式 */
+        table {
+            font: 1em sans-serif;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        /*给行列加边框*/
+        table td,table th {
+            border: 1px solid black;
+        }
+        
+        /* 所有table里的thead里的所有th */
+        table thead th {
+            background-color: yellowgreen;
+            color: red;
+        }
+        /* 所有table里的tbody里的所有td（第一个除外），每个td都是由它上边的td选择(上边的节点选择其兄弟节点) */
+        table td+td {
+            text-align: center;  /*文本对齐方式*/
+        }
+        /*table里所有的tbody里的td当中的最后一个 */
+        table tbody td:last-child {
+            text-align: right;
+        }   
+        /* 所有table里的tfoot里的th */
+        table tfoot th {
+            text-align: right;
+            border-top-width: 5px;
+            border-left: none;
+            border-bottom: none;
+        }
+        /* 在table当中，所有的th之后的td */
+        table th+td {
+            text-align: right;
+            border-top-width: 5px;
+            color: red;
+            background-color: yellow;
+        }
+        /* 定位在“with-currency”类中拥有属性lang并且这个属性值为en-US的元素中的，最后td(:last-child)节点的前面（::before）*/
+        /*为最后一列价格添加美元符号*/
+        .with-currency[lang="en-US"] td:last-child::before {
+            content: "$";
+        }
+
+
+        
+    </style>
+
+
+  </head>
+  <body>
+        <p>What color do you like?</p>
+        <div>I like blue.</div>
+        <p>I prefer red!</p>
+
+        <ul>
+            <li class="first done">Create an HTML document</li>
+            <li class="second done">Create a CSS style sheet</li>
+            <li class="third">Link them all together</li>
+        </ul>
+
+        <p id="polite"> — "Good morning."</p>
+        <p id="rude"> — "Go away!"</p>
+
+        我的食谱配料: <i lang="fr-FR">Poulet basquaise</i>
+        <ul>
+            <li data-quantity="1kg" data-vegetable>Tomatoes</li>
+            <li data-quantity="3" data-vegetable>Onions</li>
+            <li data-quantity="3" data-vegetable>Garlic</li>
+            <li data-quantity="7kg" data-vegetable="not spicy like chili">Red pepper</li>
+            <li data-quantity="2kg" data-meat>Chicken</li>
+            <li data-quantity="optional 150g" data-meat>Bacon bits</li>
+            <li data-quantity="optional 10ml" data-vegetable="liquid">Olive oil</li>
+            <li data-quantity="25cl" data-vegetable="liquid">White wine</li>
+        </ul>
+
+        <a href="https://developer.mozilla.org/">Mozilla Developer Network</a>
+
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/CSS">CSS</a> defined in the MDN glossary.</li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML">HTML</a> defined in the MDN glossary.</li>
+        </ul>
+
+
+        <table lang="en-US" class="with-currency">
+            <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th colspan="2" scope="row">Total:</th>
+                    <td>148.55</td>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr>
+                    <td>Lawnchair</td>
+                    <td>1</td>
+                    <td>137.00</td>
+                </tr>
+                <tr>
+                    <td>Marshmallow rice bar</td>
+                    <td>2</td>
+                    <td>1.10</td>
+                </tr>
+                <tr>
+                    <td>Book</td>
+                    <td>1</td>
+                    <td>10.45</td>
+                </tr>
+            </tbody>
+        </table>
+  </body>
+</html>
