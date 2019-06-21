@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>层叠和继承</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /*specificity:0002 */
+        P strong {
+            background-color: khaki;
+            color: green;
+        }
+        /*specificity:0001 */
+        strong {
+            text-decoration: underline;
+            color: red;
+        }
+        /*
+        在这个例子中:
+        因为专用性的关系,第一条规则中的color属性覆盖掉了第二条中的颜色值。
+        但是，对于第一条中的 background-color和第二条中的text-decoration 的属性都在strong元素之中得到了体现。
+        你也注意到了这个元素之中的字体是加粗的：这是浏览器默认的样式规则。
+        */
+    </style>
+  </head>
+  <body>
+        <p>I'm <strong>important</strong></p>
+  </body>
+</html>
