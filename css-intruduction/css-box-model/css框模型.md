@@ -21,9 +21,120 @@ CSS 框的`边界`（border）是一个`分隔层`，位于`内边距的外边�
 `外边距`（margin）代表 CSS 框周围的`外部区域`，称为`外边距`，它在布局中推开其它 CSS 框。其表现与 padding 很相似；简写属性为 margin，单个属性分别为 `margin-top、margin-right、margin-bottom 和 margin-left`。
 >注意: 外边距有一个特别的行为被称作外边距塌陷（margin collapsing）：当两个框彼此接触时，它们的间距将取两个相邻外边界的最大值，而非两者的总和。
 
+html:
+```
+<header>Header</header>
+<main>Main content</main>
+<footer>Footer</footer>
+```
+css:
+```
+/* General styles */
 
+body {
+    margin: 0;  /*body的外边距为0，如果设置有值的话，整个body会有个空白的外边距,另外header,main,footer也可以分别设置外边距margin*/
+}
+  
+body > * {
+    font-size: 20px;
+    padding: 10px;
+    border: 20px solid rgba(0,0,0,0.5);
+    margin: 0;
+}
+  
+/* specific boxes */
 
+header, footer {
+    background-color: blue;
+    color: white;
+}
 
+header {
+
+}
+
+main {
+    background-color: yellow;
+    margin-bottom: 20px;     /*1.设置main的下外边距为20px*/
+}
+
+footer {
+    margin-top: 15px;        /*2.设置footer的上外边距为15px*/
+    /*注意，第二个操作对布局没有任何影响——这就是外边距塌陷；较小的margin有效宽度为0，只留下值较大的margin。*/
+}
+```
+
+css2:
+```
+/* General styles */
+
+body {
+    margin: 0;  /*body的外边距为0，如果设置有值的话，整个body会有个空白的外边距,另外header,main,footer也可以分别设置外边距margin*/
+  }
+  
+body > * {
+    font-size: 20px;
+    padding: 10px;
+    border: 20px solid rgba(0,0,0,0.5);
+    margin: 0;
+}
+
+/* specific boxes */
+
+header, footer {
+    background-color: blue;
+    color: white;
+}
+
+header {
+
+}
+
+main {
+    background-color: yellow;
+    /* content原本的空间：width-height:1476 x 26.40  */
+
+    /* 将<main>元素的每一边的 margin和 padding设置为30px——注意元素的margin和padding都增加了，导致content占据的空间变小。
+        content现在的空间：width-height:1359.200 x 26.40  （content的内容往内缩）*/
+    /*
+    padding: 30px;
+    margin: 30px; 
+    */
+
+    /*默认情况下，content的width 被设置为可用空间的100%（在margin, border, padding占据了它们的空间后剩下的空间的宽度）
+        如果您更改了浏览器窗口的宽度，那么这些框将会变大或变小，以保持包含在示例输出窗口中。 height默认设置为content的高度。*/
+
+    /*尝试给 <main>元素设置一个新的宽度和高度——我们一开始可以设置为400px宽和200px高——然后看看效果！
+        您会注意到，宽度不再随着浏览器窗口的大小而改变。*/
+    /*
+    width: 200px;
+    height: 200px;
+    */
+
+    /*
+        尝试设置<main>元素一个百分比的宽度——比如说60%——然后看看效果！
+        您应该看到，随着浏览器窗口的大小调整，宽度现在又发生了变化。
+    */
+    /*
+    width: 60%;
+    height: 200px;
+    */
+
+    /*设置你的 <main>元素的内边距和外边距的各个边为5%，然后观察结果
+        随着示例输出窗口的大小增加，内边距和外边距也增加。
+    */
+    padding: 5%;
+    margin: 5%; 
+
+    /*外边距可以接受负数，这可以用来引起元素框的重叠。尝试在 <main>元素设置margin-top: -50px 然后看看效果。*/
+   
+}
+
+footer {
+        
+}
+  
+```
 
 
 
