@@ -136,6 +136,234 @@ footer {
   
 ```
 
+注意：
+1. 如果`content框`变得`比示例输出窗口大`，它将从窗口`溢出`，此时会出现`滚动条`，你可以滚动窗口来查看盒子剩余的内容 。你可以使用[overflow属性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow)来控制溢出
+2. `框`的`高度`不遵守`百分比的长度`；`框的高度`总是采用`框内容的高度`，除非指定一个绝对的高度（如：px 或者em），它会比在页面上默认是100%高度更实用。
+3. `border`也忽略百分比宽度设置
+4. `框的总宽度`是`width`, `padding-right`, `padding-left`, `border-right`, 以及 `border-left` 属性之和:
+框的总宽度:`width+padding-right+padding-left+border-right+border-left`
+5. 在一些情况下比较恼人（例如，假使你想要一个框占窗口宽度的50%，但边界和内边距是用像素来表示时该怎么办？），为了避免这种问题，有可能使用`属性box-sizing`来`调整框模型`。使用值[border-box](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing)，它将框模型更改成这个新的模型:
+![](http://pt2sht59w.bkt.clouddn.com/blog_imgs/box_model_alt_small.png)
+
+CSS 中的 `box-sizing` 属性定义了 `user agent` 应该如何`计算`一个元素的`总宽度`和`总高度`。
+```
+box-sizing: border-box;
+width: 100%;
+border: solid #5B6DCD 10px;
+padding: 5px;
+```
+***在 CSS 盒子模型的默认定义里，你对一个元素所设置的 `width` 与 `height` 只会应用到这个元素的内容区***。
+如果这个`元素`有任何的 `borde`r 或 `padding` ，绘制到屏幕上时的`盒子宽度`和`高度`会加上`设置的边框和内边距值`。这意味着当你调整一个`元素的宽度和高度`时需要时刻注意到这个`元素的边框和内边距`。当我们实现响应式布局时，这个特点尤其烦人。
+`box-sizing` 属性可以被用来调整这些表现:
+- `content-box` 是默认值。如果你设置`一个元素的宽为100px`，那么这个元素的`内容区会有100px 宽`，并且任何边框和内边距的宽度都会被增加到最后绘制出来的元素宽度中。
+- `border-box` 告诉浏览器：你想要设置的`边框`和`内边距`的值是`包含在width内`的,即如果你将一个元素的width设为100px，那么这100px会包含它的border和padding，内容区的实际宽度是width减去(border + padding)的值，这使得我们更容易地设定一个元素的宽高。
+`border-box`:`内容区的实际宽度`+ `border` +  `padding`
+注意：`border-box`不包含`margin`
+
+### 语法
+box-sizing 属性被指定为下面列表中的关键字:
+content-box:{box-sizing: content-box}
+border-box:{box-sizing: border-box}
+1. `content-box`:
+默认值，标准盒子模型。 width 与 height `只包括内容的宽和高， 不包括边框（border），内边距（padding），外边距（margin）`。注意: 内边距、边框和外边距都在这个盒子的外部。 比如说，.box {width: 350px; border: 10px solid black;} 在浏览器中的渲染的实际宽度将是 370px(350+10+10=370)
+`尺寸计算公式`：
+```
+width = 内容的宽度
+height = 内容的高度
+```
+宽度和高度的计算值都不包含内容的边框（border）和内边距（padding）
+
+2. `border-box`:
+ width 和 height 属性`包括内容，内边距和边框，但不包括外边距`。
+`尺寸计算公式`：
+```
+width = border + padding + 内容的宽度
+height = border + padding + 内容的高度
+```
+例子：
+```
+<div class="content-box">Content box</div>
+<br>
+<div class="border-box">Border box</div>
+```
+```
+div {
+    width: 160px;
+    height: 80px;
+    padding: 20px;
+    border: 8px solid red;
+    background: yellow;
+}
+.content-box {
+    box-sizing: content-box;
+    /*
+        Total width:160px + (20px * 2) + (8px * 2) = 216px;
+        Total height:80px + (20px * 2) + (8px * 2) = 136px;
+        Content box width:160px;
+        Content box height:80px;
+    */
+}
+.border-box {
+    box-sizing: border-box;
+    /*
+        Total width:160px;
+        Total height:80px;
+        Content box width:160px - (20px * 2) - (8px * 2) = 104px;
+        Content box height:80px - (20px * 2) - (8px * 2) = 24px;
+    */
+}
+```
+
+### 高级的框操作
+#### 溢流
+当你使用`绝对的值`设置了一个框的大小（如，固定像素的宽/高），`允许的大小可能不适合放置内容`，这种情况下内容会从盒子`溢流`。我们使用`overflow`属性来控制这种情况的发生。它有一些可能的值，但是最常用的是：
+- `auto`: 当内容过多，溢流的内容被隐藏，然后出现滚动条来让我们滚动查看所有的内容。
+- `hidden`: 当内容过多，溢流的内容被隐藏。
+- `visible`: 当内容过多，溢流的内容被显示在盒子的外边（这个是默认的行为）
+首先是HTML代码:
+```
+<p class="autoscroll">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Mauris tempus turpis id ante mollis dignissim. Nam sed
+    dolor non tortor lacinia lobortis id dapibus nunc. Praesent
+    iaculis tincidunt augue. Integer efficitur sem eget risus
+    cursus, ornare venenatis augue hendrerit. Praesent non elit
+    metus. Morbi vel sodales ligula.
+</p>
+
+<p class="clipped">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Mauris tempus turpis id ante mollis dignissim. Nam sed
+    dolor non tortor lacinia lobortis id dapibus nunc. Praesent
+    iaculis tincidunt augue. Integer efficitur sem eget risus
+    cursus, ornare venenatis augue hendrerit. Praesent non elit
+    metus. Morbi vel sodales ligula.
+</p>
+
+<p class="default">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Mauris tempus turpis id ante mollis dignissim. Nam sed
+    dolor non tortor lacinia lobortis id dapibus nunc. Praesent
+    iaculis tincidunt augue. Integer efficitur sem eget risus
+    cursus, ornare venenatis augue hendrerit. Praesent non elit
+    metus. Morbi vel sodales ligula.
+</p>
+```
+CSS代码：
+```
+.autoscroll {
+    overflow: auto; /*出现滚动条来让我们滚动查看所有的内容*/
+}
+.clipped {
+    overflow: hidden; /*溢流的内容被隐藏*/
+}
+.default {
+    overflow: visible; /*溢流的内容被显示在盒子的外边（这个是默认的行为）*/
+}
+```
+
+#### 背景裁剪（Background clip）
+`框的背景`是由`颜色`和`图片`组成的，它们`堆叠`在一起（background-color, background-image）。 它们被应用到一个盒子里，然后被画在盒子的下面。
+它们被应用到一个盒子里，默认情况下，背景延伸到了边界外沿(`边框border的外沿`)。这通常是OK的，但是在一些情况下比较讨厌（假使你有一个平铺的背景图，你`只想要它延伸到内容(content)的边沿`会怎么做？），该行为可以通过设置盒子的`background-clip属性`来调整。
+首先是HTML代码:
+```
+<div class="default"></div>
+<div class="padding-box"></div>
+<div class="content-box"></div>
+```
+
+CSS代码：
+```
+div {
+    width: 60px;
+    height: 60px;
+    padding: 20px;
+    border: 20px solid rgba(0, 0, 0, 0.5);
+    margin: 20px 0;
+    
+    background-size: 140px;
+    background-position: center;
+    background-image:url('https://mdn.mozillademos.org/files/11947/ff-logo.png');
+    background-color: gold;
+}
+
+.default {
+    background-clip: border-box;  /*默认情况下，背景延伸到了边界外沿(`边框border的外沿`)*/
+}
+.padding-box {
+    background-clip: padding-box; /*背景延伸到了内边距（padding）外沿*/
+}
+.content-box {
+    background-clip: content-box; /*背景延伸到了内容外沿*/
+}
+```
+
+#### 轮廓(Outline)
+
+
+### CSS 框类型
+前我们说的所有对于框的应用都表示的是`块级元素`的，然而，`CSS还有一些表现不同的其他框类型`。我们可以通过`display属性`来`设定元素的框类型`。display属性有很多的属性值。在本篇文章，我们将关注三个最常见的类型：`block, inline, and inline-block`。
+- `块框`（ block box）是定义为堆放在其他框上的框（例如：其`内容会独占一行`），而且可以设置它的宽高，`之前所有对于框模型的应用适用于块框 （ block box）`
+- `行内框`（ inline box）与块框是相反的，它随着文档的文字流动（例如：它将会和周围的文字和其他行内元素出现在`同一行`，而且它的内容会像一段中的文字一样随着文字部分的流动而打乱），`对行内盒设置宽高无效`，设置padding, margin 和 border都会更新周围文字的位置，但是对于周围的的块框（ block box）不会有影响。
+- `行内块状框`（inline-block box） 像是上述两种的集合：它不会重新另起一行但会像行内框（ inline box）一样随着周围文字而流动，而且他能够设置宽高，并且像块框一样保持了其块特性的完整性，它`不会在段落行中断开`。（在下面的示例中，行内块状框会放在第二行文本上，因为第一行没有足够的空间，并且不会突破两行。然而，如果没有足够的空间，行内框会在多条线上断裂，而它会失去一个框的形状。）
+>注意：默认状态下display属性值，`块级元素display: block` ，`行内元素display: inline`
+
+HTML代码:
+```
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <span class="inline">Mauris tempus turpis id ante mollis dignissim.</span>
+    Nam sed dolor non tortor lacinia lobortis id dapibus nunc.
+</p>
+
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <span class="block">Mauris tempus turpis id ante mollis dignissim.</span>
+    Nam sed dolor non tortor lacinia lobortis id dapibus nunc.
+</p>
+
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <span class="inline-block">Mauris tempus turpis id ante mollis dignissim.</span>
+    Nam sed dolor non tortor lacinia lobortis id dapibus nunc.
+</p>
+```
+CSS代码：
+```
+p {
+    padding: 1em;
+    border: 1px solid black;
+}
+span {
+    padding: 0.5em;
+    border: 1px solid green;
+    background-color:   yellow;
+}
+.inline {
+    display: inline;
+}
+.block {
+    display: block;
+}
+.inline-block {
+    display: inline-block;
+}
+```
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
