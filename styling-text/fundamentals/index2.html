@@ -18,6 +18,8 @@
                              模糊半径（默认为0） 
                                 阴影的基础颜色（默认为 black.）                      */
         text-shadow: 4px 4px 5px red;  
+
+        text-align: center;     /*文本布局-文本对齐-居中文字*/
       }
       
 
@@ -30,7 +32,17 @@
         font-size: 1.4rem;
         color: red;
         font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.5;
       }
+
+      /*设置所有段落的第一行文本中的字母与字母之间的间距为2px,单词与单词之间的间距为4px*/
+      p::first-line {
+        letter-spacing: 2px;
+        word-spacing: 4px;
+      }
+
+
+
   </style>
   <body>
       <h1>Tommy the cat</h1>
