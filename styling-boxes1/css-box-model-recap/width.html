@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>width</title>
+    <link rel="stylesheet" href="">
+  </head>
+  <style>
+      /*默认宽度(整个屏幕宽)
+        浏览器为段落p提供了外边距的预定的样式,div没有
+      */
+      p.goldie {
+        background: gold;
+      }
+      /*px 和 em*/
+      .px_length {
+        width: 200px;
+        color: white;
+        background-color: red;
+        border: 1px solid black;
+      }
+      .em_length {
+        width: 10em;   /*1em=10px  10em=160px*/
+        color: red;
+        background-color: white;
+        border: 1px solid black;
+      }
+
+      /*百分比*/
+      .percent {
+        width: 50%;  /*屏幕宽一半*/ 
+      }
+
+
+  </style>
+  <body>
+      <p class="goldie">The Mozilla community produces a lot of great software.</p>
+
+      <div class="px_length">以 px 度量的宽度</div>
+      <div class="em_length">以 em 度量的宽度</div>
+
+      <div class="percent">按照百分比度量的宽度</div>
+
+      <a href="#">链接</a><a href="#">链接1</a>
+  </body>
+</html>
