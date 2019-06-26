@@ -27,7 +27,7 @@ html:
 <main>Main content</main>
 <footer>Footer</footer>
 ```
-css:
+css:'
 ```
 /* General styles */
 
@@ -351,7 +351,7 @@ span {
 ```
     
 
-
+```
 
 
 
