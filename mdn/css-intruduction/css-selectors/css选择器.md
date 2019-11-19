@@ -1,6 +1,8 @@
 简而言之，`选择器`是 CSS 规则的一部分且位于 CSS 声明块前。
-![](http://pt2sht59w.bkt.clouddn.com/blog_imgs/css_syntax_ruleset.png.png)
+![](http://pt2sht59w.bkt.clouddn.com/blog_imgs/css_syntax_ruleset.png)
+
 ### 不同种类的CSS选择器
+
 - 简单选择器（Simple selectors）：通过元素类型、class 或 id 匹配一个或多个元素。
 - 属性选择器（Attribute selectors）：通过 属性 / 属性值 匹配一个或多个元素。
 - 伪类（Pseudo-classes）：匹配处于确定状态的一个或多个元素，比如被鼠标指针悬停的元素，或当前被选中或未选中的复选框，或元素是DOM树中一父节点的第一个子节点。
@@ -20,6 +22,7 @@ ID选择器是由一个哈希/磅符号 (#)，后面跟着给定元素的ID名�
 4. 通用选择器
 
 ### 属性选择器
+
 1. 存在和值（Presence and value）属性选择器
 这些属性选择器尝试`匹配精确的属性值`：
 - [attr]：该选择器选择包含 attr 属性的所有元素，不论 attr 的值为何。
@@ -67,6 +70,7 @@ a:hover {
 通用兄弟选择器|A ~ B|匹配B元素，满足条件：B是A之后的任意一个兄弟节点（AB有相同的父节点，B在A之后，但不一定是紧挨着A）     
 
 #### 组合器示例
+
 ```
 /* 基本的table样式 */
 table {
