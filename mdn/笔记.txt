@@ -1,0 +1,56 @@
+css
+css：属性 - property; 属性值 - value
+css规则集/规则：选择器、声明、属性、属性值
+css声明
+css声明块
+css选择器-selector + css声明块 => 规则集/规则
+
+css语句
+语句类型：规则、at规则(at-rules)
+
+@-规则集:@ + 标识符
+下面是一些 @规则, 由它们的标示符指定, 每种规则都有不同的语法:
+at规则涵盖了meta信息:
+@charset
+@namespace
+@import -  @import 'custom.css';信息
+
+条件规则：
+@media
+@supports
+@document
+@page
+@font-face
+@keyframes
+
+简写属性：
+font、background、padding、border、margin...
+
+选择器：
+基本选择器：
+元素选择器
+类选择器
+id选择器
+通配选择器
+属性选择器
+
+组合选择器：
+选择器组
+后代选择器
+子选择器
+相邻选择器
+
+伪类和伪元素：
+
+
+
+
+
+
+
+
+
+
+
+
+
