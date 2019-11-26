@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>元素选择器</title>
+  <!-- 在CSS中,一个星号(*)就是一个通配选择器.它可以匹配任意类型的HTML元素.
+        在配合其他简单选择器的时候,省略掉通配选择器会有同样的效果.比如,*.warning 和.warning 的效果完全相同. -->
+  <style>
+    *[lang^=en]{color: green;}
+    *.warning{color:red}
+    *#maincontent{border:1px solid blue}
+  </style>
+</head>
+<body>
+  <p class="warning">
+    <span lang="en-us">A green span</span> in a red paragraph.
+  </p>
+  <p id="maincontent" lang="en-gb">
+    <span class="warning">A red span</span> in a green paragraph.
+  </p>
+</body>
+</html>
