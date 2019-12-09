@@ -1,6 +1,4 @@
 简而言之，`选择器`是 CSS 规则的一部分且位于 CSS 声明块前。
-![](http://pt2sht59w.bkt.clouddn.com/blog_imgs/css_syntax_ruleset.png)
-
 ### 不同种类的CSS选择器
 
 - 简单选择器（Simple selectors）：通过元素类型、class 或 id 匹配一个或多个元素。
@@ -21,40 +19,8 @@
 ID选择器是由一个哈希/磅符号 (#)，后面跟着给定元素的ID名称组成的。 任何元素都可以使用id属性设置唯一的ID名称。 由你自己决定选择一个ID名称是什么。 这是选择单个元素的`最有效的方式`。
 4. 通用选择器
 
-### 属性选择器
 
-1. 存在和值（Presence and value）属性选择器
-这些属性选择器尝试`匹配精确的属性值`：
-- [attr]：该选择器选择包含 attr 属性的所有元素，不论 attr 的值为何。
-- [attr=val]：该选择器仅选择 attr 属性被赋值为 val 的所有元素。
-- [attr~=val]：该选择器仅选择具有 attr 属性的元素，而且要求 val 值是 attr 值包含的被空格分隔的取值列表里中的一个。
-2. 子串值（Substring value）属性选择器
-这种情况的属性选择器也被称为`“伪正则选择器”`，因为它们提供类似 regular expression 的灵活匹配方式（但请注意，这些选择器并不是真正的正则表达式）：
-- [attr|=val] : 选择attr属性的值是 val 或值以 val- 开头的元素（注意，这里的 “-” 不是一个错误，这是用来处理语言编码的）。
-- [attr^=val] : 选择attr属性的值以 val 开头（包括 val）的元素。
-- [attr$=val] : 选择attr属性的值以 val 结尾（包括 val）的元素。
-- [attr*=val] : 选择attr属性的值中包含子字符串 val 的元素（一个子字符串就是一个字符串的一部分而已，例如，”cat“ 是 字符串 ”caterpillar“ 的子字符串）。
 
-### 伪类和伪元素 Pseudo-classe and pseudo-elements
-1. 伪类（pseudo class）
-一个 `CSS  伪类`（pseudo-class） 是一个`以冒号(:)作为前缀`，被`添加到一个选择器末尾`的关键字，当你希望样式在特定状态下才被呈现到指定的元素时，你可以往元素的选择器后面加上对应的伪类（pseudo-class）。
-你可能希望 `某个元素`在处于`某种状态下`呈现另一种样式，例如`当鼠标悬停在元素上面`时，或者`当一个复选框被禁用或被勾选`时，又或者当一个元素是它在 DOM 树中父元素的第一个子元素时。
-如
-```
-/*当光标悬停于链接,让链接呈现高亮并且去除下划线*/
-a:hover {
-    color: darkred;
-    text-decoration: none;
-}
-```
-2. 伪元素(pseudo elements)
-`伪元素`（Pseudo-element）跟`伪类`很像，但它们又有不同的地方。它们都是关键字，但这次伪元素`前缀是两个冒号 (::)` ， 同样是`添加到选择器后面`去`选择某个元素的某个部分`。
-- ::after
-- ::before
-- ::first-letter
-- ::first-line
-- ::selection
-- ::backdrop
 
 ### 组合器和多个选择器
 虽然一次使用一个选择器就很有用，但在某些情形中却可能导致效率低下。
