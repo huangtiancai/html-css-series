@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>常用选择器</title>
+  <style type="text/css">
+    /* 为页面所有p元素设置一个字体颜色为红色*/
+    /* 元素选择器 */
+    p {
+      color: red;
+    }
+
+    h1 {
+      color: red;
+    }
+
+    /* id选择器 - id 不可重复 */
+    #p1 {
+      font-size: 30px;
+    }
+
+    /*类选择器 
+    - class属性不可重复，通过元素的class属性值选中一组元素
+    - 可以同时为一个元素设置多个class属性值，多个值之间使用空格隔开,可以分别通过这些class同时选中这个元素
+    */
+    .p2 {
+      color: orange;
+    }
+
+    .hello {
+      font-size: 25px;
+    }
+
+    /* 为id为p1的元素，class为p2的元素，还有h1同时设置一个背景颜色*/
+    /*选择器分组（并集选择器）
+      - 通过选择器分组可以同时选中多个选择器对应的元素
+      - 语法：选择器1,选择器2,选择器3{}
+    */
+    #p1,
+    .p2,
+    h1 {
+      background-color: aqua;
+    }
+
+    /*选中页面中所有元素（使用通配符）- 语法：*{}*/
+
+    /*为拥有class p3 span元素设置一个背景颜色*/
+    /*复合选择器（交集选择器）
+      - 可以选中同时满足多个选择器的元素
+      - 语法：选择器1选择器2选择器3{}
+    */
+    span.p3 {
+      background-color: blueviolet;
+    }
+
+    /*对id选择器一般不建议使用复合选择器（id已经唯一确定元素了，再加其它元素没必要）*/
+    /* p#p1{} */
+  </style>
+
+
+</head>
+
+<body>
+  <h1>这是一个标题</h1>
+  <p>我是一个p标签</p>
+  <p>我是一个p标签</p>
+  <p id="p1">我是一个p标签</p>
+  <p class="p2 hello">我是一个p标签</p>
+  <p class="p2">我是一个p标签</p>
+  <p class="p2">我是一个p标签</p>
+  <p>我是一个p标签</p>
+  <p>我是一个p标签</p>
+  <p>我是一个p标签</p>
+  <p class="p3">我是一个p标签</p>
+  <span class="p3">我是一个span标签</span>
+
+</body>
+
+</html>
