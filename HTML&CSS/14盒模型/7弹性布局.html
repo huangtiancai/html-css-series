@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>弹性布局</title>
+  <style>
+    html {
+      font-family: sans-serif;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    header {
+      background: purple;
+      height: 100px;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      line-height: 100px;
+      margin: 0;
+    }
+
+    article {
+      padding: 10px;
+      margin: 10px;
+      background: aqua;
+      /* flex: 1; */
+    }
+
+    /* Add your flexbox CSS below here */
+
+    /*指定元素的布局为 flexible
+      1.首先，我们需要选择将哪些元素将设置为柔性的盒子 =><article>
+      2.需要给这些 flexible 元素的父元素<section>的 display属性设置一个特定值
+        使其父元素变成flex 容器
+    */
+    section {
+      display: flex;
+      /*将元素设合资为列布局*/
+      /* flex-direction: column; */
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Sample flexbox example</h1>
+  </header>
+
+  <section>
+    <article>
+      <h2>First article</h2>
+
+      <p>Tacos actually microdosing, pour-over semiotics banjo chicharrones retro fanny pack portland everyday carry
+        vinyl typewriter. Tacos PBR&B pork belly, everyday carry ennui pickled sriracha normcore hashtag polaroid
+        single-origin coffee cold-pressed. PBR&B tattooed trust fund twee, leggings salvia iPhone photo booth health
+        goth gastropub hammock.</p>
+    </article>
+
+    <article>
+      <h2>Second article</h2>
+
+      <p>Tacos actually microdosing, pour-over semiotics banjo chicharrones retro fanny pack portland everyday carry
+        vinyl typewriter. Tacos PBR&B pork belly, everyday carry ennui pickled sriracha normcore hashtag polaroid
+        single-origin coffee cold-pressed. PBR&B tattooed trust fund twee, leggings salvia iPhone photo booth health
+        goth gastropub hammock.</p>
+    </article>
+
+    <article>
+      <h2>Third article</h2>
+
+      <p>Tacos actually microdosing, pour-over semiotics banjo chicharrones retro fanny pack portland everyday carry
+        vinyl typewriter. Tacos PBR&B pork belly, everyday carry ennui pickled sriracha normcore hashtag polaroid
+        single-origin coffee cold-pressed. PBR&B tattooed trust fund twee, leggings salvia iPhone photo booth health
+        goth gastropub hammock.</p>
+
+      <p>Cray food truck brunch, XOXO +1 keffiyeh pickled chambray waistcoat ennui. Organic small batch paleo 8-bit.
+        Intelligentsia umami wayfarers pickled, asymmetrical kombucha letterpress kitsch leggings cold-pressed squid
+        chartreuse put a bird on it. Listicle pickled man bun cornhole heirloom art party.</p>
+    </article>
+  </section>
+</body>
+
+</html>

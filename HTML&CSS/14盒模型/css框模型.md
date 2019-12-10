@@ -76,13 +76,15 @@ display: inline-block;
 ```
 mdn:https://developer.mozilla.org/zh-CN/docs/Web/CSS/display
 
+
 7.弹性盒子/弹性布局（Flexbox）=> 简写：Flex 
 
 mdn:https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Flexbox
+http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
 
 8.网格
 mdn:https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Grids
-
+http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html
 
 上面7、8弹性布局和网格布局 => 它们布局方式 => 浮动和定位
 浮动和定位是唯一可用的且有稳定的跨浏览器兼容性的能用来构建 CSS 布局的工具，仅仅在某些布局方面它们就有限制
