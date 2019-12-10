@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>关于html中的设置body宽高的理解</title>
+  <style>
+    /* 一、CSS样式：html,body{height:100%} 
+      为什么html还需要设置height:100%呢?
+    */
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    div {
+      height: 50%;
+      background-color: antiquewhite;
+    }
+
+    /* html、body、div三个标签宽、高一致，宽度全屏显示(浏览器窗口可以缩放大小，宽度课变化)，高度都为0px
+      注意：
+        1.一个div块级元素没有主动为其设置宽度和高度，浏览器会为其分配可使用的最大宽度(比如全屏宽度)，但是不负责分配高度
+        2.块级元素的高度是由子元素堆砌撑起来的
+        3.html和body标签的高度也都是由子级元素堆砌撑起来的
+        4.元素高度百分比需要向上遍历父标签要找到一个定值高度才能起作用（百分比需要依赖）
+        5.如果向上遍历父标签的中途有个height为auto或是没有设置height属性，则高度百分比不起作用=>此时的情况是父元素高度依赖子元素堆砌撑高
+          而子元素依赖父元素的定高起作用，互相依赖，却都无法依赖，死循环了
+      针对上述的问题如何解决？ (如果子元素一定要依赖父元素高度)
+      方法：设置html的height:100%（即html是父级浏览器的100%），浏览器本身是有宽度和高度的，设置html的height:100%，后面的body和div也就有了依赖。
+      height: 100%; =>div>body>html>浏览器本身（width/height）
+    */
+  </style>
+
+
+</head>
+
+<body>
+  <div></div>
+</body>
+
+</html>
