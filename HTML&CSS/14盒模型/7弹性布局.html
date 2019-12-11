@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>弹性布局</title>
+  <title>Flexbox 1 — basic flexbox model chosen</title>
   <style>
     html {
       font-family: sans-serif;
@@ -25,21 +25,20 @@
       margin: 0;
     }
 
+    article {
+      padding: 10px;
+      margin: 10px;
+      background: aqua;
+      flex: 1 200px;
+    }
+
     article:nth-of-type(3) {
-      flex: 2;
+      flex: 2 200px;
     }
 
     /* Add your flexbox CSS below here */
-
-    /*指定元素的布局为 flexible
-      1.首先，我们需要选择将哪些元素将设置为柔性的盒子 =><article>
-      2.需要给这些 flexible 元素的父元素<section>的 display属性设置一个特定值
-        使其父元素变成flex 容器
-    */
     section {
       display: flex;
-      /*将元素设合资为列布局*/
-      /* flex-direction: column; */
     }
   </style>
 </head>
