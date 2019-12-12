@@ -50,6 +50,12 @@ https://developer.mozilla.org/zh-CN/docs/Learn/CSS/%E4%B8%BA%E6%96%87%E6%9C%AC%E
 
 
 
+属性总结：
+行高：line-height
+https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height
+1.理解line-height含义
+2.line-height垂直居中属性
+
 
 
 

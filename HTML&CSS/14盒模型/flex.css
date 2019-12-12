@@ -1,23 +1,68 @@
-body{
+body {
   margin: 0 auto;
+  padding: 20px;
   background-color: #E2E2E2;
   max-width: 1024px;
-  color:  #595B66;
+  color: #595B66;
   font-family: 'Microsoft Yahei', sans-serif;
 }
 
-h1,h2,h3,h4{
+h1,
+h2,
+h3,
+h4 {
   color: #797979;
+  padding: 5px 0;
 }
 
-h1,h2{
-  border-bottom: solid 2px #797979; 
+h1,
+h2 {
+  border-bottom: solid 2px #797979;
 }
 
-.box{
+p {
+  /*p是块级元素-独占一行*/
 
+  /*字体大小*/
+  font-size: 15px;
+  /*字体颜色*/
+  color: white;
+  /*背景色*/
+  background-color: #797979;
+  /*行高*/
+  line-height: 2;
+  /*内边距*/
+  padding: 10px;
+  /*圆角*/
+  border-radius: 5px;
 }
 
-.box-item{
+.box {
+  /*指定Flex容器背景色为白色,下面的所有的指定Flex容器均适用*/
+  background-color: white;
+  /*指定为flex布局,如若不指定Flex 容器，div（块级元素）会自动换行*/
+  display: flex;
+}
 
+.box-1 {
+  /* flex-direction: row; */
+}
+
+.box-item {
+  /*设置每个div项的大小和背景色*/
+  width: 200px;
+  height: 200px;
+  background-color: #ffd200;
+
+  /*设置每个div项的外边距*/
+  margin: 5px;
+
+  /*行高line-height等于设置height+垂直方向上居中 可以省略height的设置，直接设置行高 */
+  line-height: 200px;
+  /* text-align: center; 行内内容居中 - 水平(X轴)方向；vertical-align: center; - 垂直方向（Y轴）对齐方式*/
+  text-align: center;
+
+  /*数字的字体大小、颜色*/
+  font-size: 100px;
+  color: white;
 }
