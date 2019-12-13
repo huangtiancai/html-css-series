@@ -97,3 +97,49 @@ p {
 .box-5 {
   flex-flow: row nowrap;
 }
+
+.box-6 {
+  justify-content: flex-start;
+}
+
+.box-7 {
+  justify-content: flex-end;
+}
+
+.box-8 {
+  justify-content: center;
+}
+
+.box-9 {
+  justify-content: space-between;
+}
+
+.box-10 {
+  justify-content: space-around;
+}
+
+
+.box-11 {
+  align-items: flex-start;
+}
+
+.box-12 {
+  align-items: flex-end;
+}
+
+.box-13 {
+  align-items: center;
+}
+
+.box-14 {
+  align-items: baseline;
+}
+
+.box-15 {
+  align-items: stretch;
+}
+
+
+.item-tall {
+  line-height: ;
+}
