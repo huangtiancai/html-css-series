@@ -15,8 +15,9 @@
   <h2>容器的属性</h2>
   <h3>1、flex-direction属性</h3>
   <p>flex-direction属性决定主轴的方向（即项目的排列方向）。</p>
-  <p>.box { flex-direction: row | row-reverse | column | column-reverse; } </p>
+  <p>语法：.box { flex-direction: row | row-reverse | column | column-reverse; } </p>
 
+  <p>（1）row（默认值）：主轴为水平方向，起点在左端</p>
   <div class="box box-1">
     <div class="box-item">1</div>
     <div class="box-item">2</div>
@@ -24,10 +25,36 @@
     <div class="box-item">4</div>
   </div>
 
+  <p>（2）row-reverse：主轴为水平方向，起点在右端</p>
+  <div class="box box-1-2">
+    <div class="box-item">1</div>
+    <div class="box-item">2</div>
+    <div class="box-item">3</div>
+    <div class="box-item">4</div>
+  </div>
+
+
+  <p>（3）column：主轴为垂直方向，起点在上沿</p>
+  <div class="box box-1-3">
+    <div class="box-item">1</div>
+    <div class="box-item">2</div>
+    <div class="box-item">3</div>
+    <div class="box-item">4</div>
+  </div>
+
+  <p>（4）column-reverse：主轴为垂直方向，起点在下沿</p>
+  <div class="box box-1-4">
+    <div class="box-item">1</div>
+    <div class="box-item">2</div>
+    <div class="box-item">3</div>
+    <div class="box-item">4</div>
+  </div>
+
   <h3>2、flex-wrap属性</h3>
-  <p>默认情况下，项目都排在一条线（又称"轴线"）上。flex-wrap属性定义，如果一条轴线排不下，如何换行。 </p>
-  <p>.box{ flex-wrap: nowrap | wrap | wrap-reverse; } </p>
-  <p>nowrap（默认）：不换行。</p>
+  <p>默认情况下，项目都排在一条线（又称"轴线"）上。flex-wrap属性定义了=>如果一条轴线排不下的情况下，如何换行。</p>
+  <p>语法：.box{ flex-wrap: nowrap | wrap | wrap-reverse; } </p>
+
+  <p>（1）nowrap（默认）：不换行。</p>
 
   <div class="box box-2">
     <div class="box-item">1</div>
@@ -38,6 +65,50 @@
     <div class="box-item">6</div>
     <div class="box-item">7</div>
   </div>
+
+  <p>（2）wrap:换行，第一行在上方</p>
+
+  <div class="box box-3">
+    <div class="box-item">1</div>
+    <div class="box-item">2</div>
+    <div class="box-item">3</div>
+    <div class="box-item">4</div>
+    <div class="box-item">5</div>
+    <div class="box-item">6</div>
+    <div class="box-item">7</div>
+  </div>
+
+  <p>（3）wrap:换行，第一行在下方</p>
+
+  <div class="box box-4">
+    <div class="box-item">1</div>
+    <div class="box-item">2</div>
+    <div class="box-item">3</div>
+    <div class="box-item">4</div>
+    <div class="box-item">5</div>
+    <div class="box-item">6</div>
+    <div class="box-item">7</div>
+  </div>
+
+  <h3>3、flex-flow</h3>
+  <p>flex-direction 和 flex-wrap — 的缩写 flex-flow，默认值为row nowrap</p>
+  <p>
+    语法：.box{flex-flow:flex-direction || flex-wrap}
+  </p>
+
+  <div class="box box-5">
+    <div class="box-item">1</div>
+    <div class="box-item">2</div>
+    <div class="box-item">3</div>
+    <div class="box-item">4</div>
+    <div class="box-item">5</div>
+    <div class="box-item">6</div>
+    <div class="box-item">7</div>
+  </div>
+
+  <h3>4、justify-content属性</h3>
+  <p>justify-content属性定义了项目在主轴上的对齐方式</p>
+
 
 </body>
 
