@@ -139,7 +139,6 @@ p {
   align-items: stretch;
 }
 
-
 .item-tall {
-  line-height: ;
+  /* line-height: ; */
 }
