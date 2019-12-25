@@ -118,27 +118,6 @@ p {
   justify-content: space-around;
 }
 
-
 .box-11 {
   align-items: flex-start;
-}
-
-.box-12 {
-  align-items: flex-end;
-}
-
-.box-13 {
-  align-items: center;
-}
-
-.box-14 {
-  align-items: baseline;
-}
-
-.box-15 {
-  align-items: stretch;
-}
-
-.item-tall {
-  /* line-height: ; */
 }
