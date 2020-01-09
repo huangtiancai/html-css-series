@@ -1,88 +1,151 @@
-CSS预处理器(css preprocessor)，Sass便是其中之一
-
-Sass (Syntactically Awesome StyleSheets)是css的一个扩展开发工具，它允许你使用变量、条件语句等，使开发更简单可维护。
-官方文档：https://sass-lang.com/documentation
-
-一、环境准备
-sass基于Ruby语言开发而成，因此安装sass前需要安装Rub
-官网下载Rub:https://rubyinstaller.org/downloads
-rubyinstaller-devkit-2.5.7-1-x64.exe
-
-注意版本下载的问题，版本过高会影响后续sass的安装，2.7版本经测试影响安装sass
-
-安装完成后需测试安装有没有成功,运行CMD输入以下命令：
+一、npm安装sass：
+https://sass-lang.com/install
 ```
-$ ruby -v
-ruby 2.7.0p0 (2019-12-25 revision 647ee6f091) [x64-mingw32]
-```
-
-请尽可能用比较新的 RubyGems 版本，建议 2.6.x 以上。
-```
-gem update --system //该命令请翻墙一下
-$ gem -v
-3.1.2
+npm install -g sass
 ```
 
 ```
-//删除替换原gem源
-$ gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
-https://gems.ruby-china.com/ added to sources
-https://rubygems.org/ removed from sources
-
-//打印是否替换成功
-$ gem sources -l
-*** CURRENT SOURCES ***
-
-https://gems.ruby-china.com/
-
-# 确保只有 gems.ruby-china.com
+$sass --version
+1.24.2 compiled with dart2js 2.7.0
 ```
 
-二、sass安装
-Ruby自带一个叫做RubyGems的系统，用来安装基于Ruby的软件。我们可以使用这个系统来 轻松地安装Sass和Compass。
-要安装最新版本的Sass和Compass，你需要输入下面的命令：
-```
-//安装如下(如mac安装遇到权限问题需加 sudo gem install sass)
-gem install sass
-gem install compass
-```
-安装完成之后，你应该通过运行下面的命令来确认应用已经正确地安装到了电脑中：
-```
-sass -v
-compass -v
-```
-如下sass常用更新、查看版本、sass命令帮助等命令：
-```
-//更新sass
-gem update sass
+二、learn sass
+https://sass-lang.com/guide
 
-//查看sass版本
-sass -v
-
-//查看sass帮助
-sass -h
+1.监听单文件
 ```
-
-三、编译sass
-Sass文件后缀为 .scss，因此要编译成 .css 文件
-1.命令行编译
+sass --watch input.scss output.css
 ```
-sass 
+上述命令可以放在启动脚本中：
+初始化一个package.json
+```
+npm init -y
+```
+添加脚本：
+```
+"scripts": {
+  "dev": "sass --watch input.scss output.css"
+}
+```
+启动：
+```
+npm run dev
+```
+启动命令后，进行编译，编译完成后处于监听状态，可以实时编译输入的scss
+
+注意yarn的使用，以及npm和yarn的区别：
+```
+npm install -g yarn
 ```
 
+参考：https://www.jianshu.com/p/254794d5e741
+Yarn的优点？
+- 速度快
+- 安装版本统 - Yarn 有一个锁定文件 (lock file) 记录了被确切安装上的模块的版本号。每次只要新增了一个模块，Yarn 就会创建（或更新）yarn.lock 这个文件。这么做就保证了，每一次拉取同一个项目依赖时，使用的都是一样的模块版本
+- 更简洁的输出
+- 多注册来源处理
+- 更好的语义化
+- yarn改变了一些npm命令的名称，比如 yarn add/remove，感觉上比 npm 原本的 install/uninstall 要更清晰
+
+Yarn和npm命令对比：
+```
+npm 	
+yarn
+
+npm install
+yarn
+
+npm install react --save 	
+yarn add react
+
+npm uninstall react --save 	
+yarn remove react
+
+npm install react --save-dev 	
+yarn add react --dev
+
+npm update --save 	
+yarn upgrade
+```
+
+npm做的改进：
+- 默认新增了类似yarn.lock的 package-lock.json
+- git 依赖支持优化
+- 文件依赖优化
+
+目前暂时仍然使用npm包管理器
+
+2.监听目录
+直接启动监听
+```
+sass --watch sass:dist
+```
+或在package.json中配置启动脚本：
+```
+  "scripts": {
+    "dev": "sass --watch sass:dist"
+  }
+```
+启动：
+```
+npm run dev
+```
+注意：下面的例子均在package.json中配置启动脚本，直接通过npm run xxx形式启动编译和监听
+
+3.变量-Variables
+- 把反复使用的css属性值 定义成变量，然后通过变量名来引用它们，而无需重复书写这一属性值
+- 如果你需要一个不同的值，只需要改变这个变量的值，则所有引用此变量的地方生成的值都会随之改变
+- sass使用$符号来标识变量
+3.1变量声明
+```
+变量              变量值/属性值
+$highlight-color: #F90;
+```
+- 使用$符号来标识变量
+- 任何可以用作css属性值的赋值都可以用作sass的变量值
+- 属性值可以空格分割的多个属性值，如`$basic-border: 1px solid black;`或以逗号分割的多个属性值，如`$plain-font: "Myriad Pro"、Myriad、"Helvetica Neue"、Helvetica、"Liberation Sans"、Arial和sans-serif; sans-serif;`
+- sass变量声明后并未生效，引用后才会生效
+
+3.2变量定义的规则
+与CSS属性不同，变量可以在css规则块定义之外存在；
+当变量定义在css规则块内，那么该变量只能在此规则块内使用
+```
+$nav-color: #F90;
+nav {
+  $width: 100px;
+  width: $width;
+  color: $nav-color;
+}
+
+//编译后
+
+nav {
+  width: 100px;
+  color: #F90;
+}
+```
+$nav-color这个变量定义在了规则块外边，所以在这个样式表中都可以像 nav规则块那样引用它;
+$width这个变量定义在了nav的{ }规则块内，所以它只能在nav规则块 内使用=>可以在样式表的其他地方重新定义和使用$width变量
+
+3.3变量的引用
+
+
+
+
+4.嵌套-Nesting
+5.Partials-部分/分布
+6.Modules
+7.Mixins
+8.Extend/Inheritance
+9.Operators
 
 
 
 
 
-
-
-
-
-
-
-
-
-
+https://sass-lang.com/guide
+https://www.sass.hk
+https://www.bilibili.com/video/av39876527
+https://space.bilibili.com/390120104/favlist?fid=312496304&ftype=create
 
 
