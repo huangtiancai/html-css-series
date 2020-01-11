@@ -1,3 +1,31 @@
+// 嵌套规则
+// 一个给定的规则块，既可以像普通的CSS那样包含属性，又可以嵌套其他规则块。
+// 当你同时要为一个容器元素及其子元素编写特定样式时，这种能力就非常有用了
+
+// 例1
+// 如下；CSS中需要重复一遍又一遍地写同一个ID
+// #content{ background-color: #f5f5f5;}
+// #content article h1 { color: #333 }
+// #content article p { margin-bottom: 1.4em }
+// #content aside { background-color: #EEE }
+
+// sass可以让你只写一遍，且使样式可读性更高
+#content{
+  // 容器元素的样式规则会被单独抽离出来
+  background-color: #f5f5f5;
+  aside{
+    background-color: #EEE;
+  }
+  article{
+    h1{color: #333;}
+    p{margin-bottom: 1.4em;}    
+  }
+}
+
+// 大多数情况下这种简单的嵌套都没问题，但是有些场景下不行，比如你想要在嵌套的选择器里边立刻应用一个类似于：hover的伪类
+// 为了解决这种以及其他情况，sass提供了一个特殊结构 &。
+
+// 例2
 .nav{
   ul{
     margin: 0;

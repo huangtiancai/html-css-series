@@ -1,3 +1,6 @@
+// 变量的使用
+
+// 变量声明
 $font-stack: Helvetica,
 sans-serif;
 
@@ -7,3 +10,41 @@ body {
   font: $font-stack;
   color: $primary-color;
 }
+
+
+// 与CSS属性不同，变量可以在css规则块定义之外存在；
+// 当变量定义在css规则块内，那么该变量只能在此规则块内使用
+$nav-color: #F90;
+nav {
+  // sass规则可以直接写在内部（内部也可以通过变量显示）
+  $width:100px;
+  width: $width;
+  color: $nav-color;
+}
+// $nav-color这个变量定义在了规则块外边，所以在这个样式表中都可以像 nav规则块那样引用它;
+// $width这个变量定义在了nav的{ }规则块内，所以它只能在nav规则块 内使用=>可以在样式表的其他地方重新定义和使用$width变量
+
+
+// 凡是css属性的标准值（比如说1px或者bold）可存在的地方，变量就可以使用
+$hight-color:#F90;
+.selected{
+  border: 1px solid $hight-color;
+}
+
+// 在声明变量时，变量值也可以引用其他变量
+
+// 通过粒度区分，为不同的值取不同名字
+// 颜色值粒度上定义了一个变量
+$m-color:#999;
+// 在另一个更复杂的边框值粒度上也定义了一个变量(引用其他变量)
+$m-border:3px solid $m-color;
+.h1{
+  border: $m-border;
+}
+
+// 中划线和下划线相互兼容
+$link-color:red;
+a{
+  color: $link_color;
+}
+// $link-color和$link_color其实指向的是同一个变量

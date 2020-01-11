@@ -107,33 +107,75 @@ $highlight-color: #F90;
 - sass变量声明后并未生效，引用后才会生效
 
 3.2变量定义的规则
-与CSS属性不同，变量可以在css规则块定义之外存在；
-当变量定义在css规则块内，那么该变量只能在此规则块内使用
-```
-$nav-color: #F90;
-nav {
-  $width: 100px;
-  width: $width;
-  color: $nav-color;
-}
-
-//编译后
-
-nav {
-  width: 100px;
-  color: #F90;
-}
-```
-$nav-color这个变量定义在了规则块外边，所以在这个样式表中都可以像 nav规则块那样引用它;
-$width这个变量定义在了nav的{ }规则块内，所以它只能在nav规则块 内使用=>可以在样式表的其他地方重新定义和使用$width变量
+- css规则只能写在选择器内部
+- 与CSS属性不同，sass的规则可以（通过变量定义的方式）写在外部=>变量可以在规则块定义之外存在；
+- 当变量定义在css规则块内，那么该变量只能在此规则块内使用
 
 3.3变量的引用
+- 凡是css属性的标准值（比如说1px或者bold）可存在的地方，变量就可以使用
+- 在声明变量时，变量值也可以引用其他变量
+- 注意通过粒度区分，为不同的值取不同名字比较实用
 
+3.4变量名用中划线还是下划线分隔
+sass的变量名可以与css中的属性名和选择器名称相同，包括中划线和下划线
+中划线：$highlight-color
+下划线：$highlight_color
+使用中划线的方式更为普遍，这也是compass和本文都用的方式
 
-
+- 中划线和下划线相互兼容
+- 定义的变量和变量的引用中相互兼容
+  用中划线声明的变量可以使用下划线的方式引用，反之亦然
 
 
 4.嵌套-Nesting
+4.1嵌套规则
+css中重复写选择器是非常恼人的
+如果要写一大串指向页面中同一块的样式时，往往需要一遍又一遍地写同一个ID以及其后代选择器
+```css
+#content article h1 { color: #333 }
+#content article p { margin-bottom: 1.4em }
+#content aside { background-color: #EEE }
+```
+像这种情况，sass可以让你只写一遍，且使样式可读性更高
+sass在输出css时会帮你把这些嵌套规则处理好，避免你的重复书写
+```CSS
+#content{
+  article{
+    h1 { color: #333 };
+    p { margin-bottom: 1.4em }
+  }
+  aside {
+     background-color: #EEE 
+  }
+}
+```
+
+大多数情况下这种简单的嵌套都没问题，但是有些场景下不行，比如你想要在嵌套的选择器里边立刻应用一个类似于:hover的伪类
+为了解决这种以及其他情况，sass提供了一个特殊结构 &
+
+4.2 父选择器的标识符&
+```CSS
+article a {
+  color: blue;
+  :hover { color: red }
+}
+```
+这种情况会像后代选择器那样拼接：
+`article a :hover { color: red }` 
+这种情况sass就无法正常工作，达不到"article元素内链接的所有子元素在被hover时都会变成红色"的效果
+
+解决之道为使用一个特殊的sass选择器，即父选择器 => &
+```CSS
+article a {
+  color: blue;
+  &:hover { color: red }
+}
+```
+当包含父选择器标识符的嵌套规则被打开时，它不会像后代选择器那样进行拼接，而是&被父选择器直接替换：
+`article a:hover { color: red }`
+
+
+
 5.Partials-部分/分布
 6.Modules
 7.Mixins
