@@ -25,6 +25,19 @@
 // 大多数情况下这种简单的嵌套都没问题，但是有些场景下不行，比如你想要在嵌套的选择器里边立刻应用一个类似于：hover的伪类
 // 为了解决这种以及其他情况，sass提供了一个特殊结构 &。
 
+// 父选择器的标识符& 使用
+article a{
+  color: blue;
+  &:hover{color: red;}
+}
+// 同时父选择器标识符还有另外一种用法，你可以在父选择器之前添加选择器
+// 如下父选择器之前添加了选择器body.ie=>body.ie #content aside{}
+#content aside{
+  color:tomato;
+  body.ie & {color: red;}
+}
+
+
 // 例2
 .nav{
   ul{
@@ -43,3 +56,45 @@
     text-decoration: none;
   }
 }
+
+
+// 群组选择器的嵌套
+.container{
+  h1,h2,h3{color: green;}
+}
+
+nav,aside{
+  a{color: red;}
+}
+
+article {
+  // 同层全体组合选择器~
+  ~ article{border-top: 1px dashed #ccc }
+  // 子组合选择器>选择一个元素的直接子元素
+  > section{background:#eee}
+  dl > {
+    dt{color: #333;}
+    dd{color: #555;}
+  }
+  // 同层相邻组合选择器+选择nav元素后紧跟的article 元素
+  nav + & {margin-top: 0;}
+}
+
+// 嵌套属性
+nav{
+  border:{
+    style: solid;
+    width:1px;
+    color:#ccc
+  }
+}
+
+// 对于属性的缩写形式，你甚至可以像下边这样来嵌套，指明例外规则：
+nav{
+  border:1px solid #ccc{
+    left: 0px;
+    right: 0px;
+  }
+}
+
+

@@ -161,7 +161,11 @@ article a {
 }
 ```
 这种情况会像后代选择器那样拼接：
-`article a :hover { color: red }` 
+```CSS
+article a :hover {
+  color: red;
+}
+```
 这种情况sass就无法正常工作，达不到"article元素内链接的所有子元素在被hover时都会变成红色"的效果
 
 解决之道为使用一个特殊的sass选择器，即父选择器 => &
@@ -172,11 +176,90 @@ article a {
 }
 ```
 当包含父选择器标识符的嵌套规则被打开时，它不会像后代选择器那样进行拼接，而是&被父选择器直接替换：
-`article a:hover { color: red }`
+```CSS
+article a:hover {
+  color: red;
+}
+```
+
+同时父选择器标识符还有另外一种用法，你可以在父选择器之前添加选择器
+如下父选择器之前添加了选择器body.ie
+```CSS
+#content aside{
+  color:tomato;
+  body.ie & {color: red;}
+}
+```
+编译后：
+```CSS
+body.ie #content aside {
+  color: red;
+}
+```
+
+4.3群组选择器的嵌套
+```CSS
+.container{
+  h1,h2,h3{color: green;}
+}
+
+nav,aside{
+  a{color: red;}
+}
+```
+4.4子组合选择器和同层组合选择器：>、+和~
+```CSS
+  ~ article{border-top: 1px dashed #ccc }
+  > section{background:#eee}
+  dl > {
+    dt{color: #333;}
+    dd{color: #555;}
+  }
+  nav + & {margin-top: 0;}
+}
+```
+
+在sass中，不仅仅css规则可以嵌套，对属性进行嵌套也可以减少很多重复性的工作
+
+4.5嵌套属性
+在sass中，除了CSS选择器，属性也可以进行嵌套
+要反复写`border-style``border-width``border-color`以及`border-*`等也是非常烦人的。在sass中，你只需敲写一遍border：
+
+嵌套属性的规则是这样的：
+把属性名从中划线-的地方断开，在`根属性`后边添加一个冒号:，紧跟一个{ }块，把`子属性`部分写在这个{ }块中
+```CSS
+nav{
+  border:{
+    style: solid;
+    width:1px;
+    color:#ccc
+  }
+}
+```
+sass会把你的子属性一一解开，把根`属性和子属性部分通过中划线-连接起来`，最后生成的效果与你手动一遍遍写的css样式一样：
+```CSS
+nav {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ccc;
+}
+```
+
+随着你的样式表变得越来越大，这种写法也很难保持结构清晰。有时，处理这种大量样式的唯一方法就是把它们分拆到多个文件中。`sass`通过对`css原有@import规则`的改进直接支持了这一特性
+
+5.Partials-部分/分布 - 导入SASS文件
+
+CSS`@import`规则特性：
+css有一个特别不常用的特性，即@import规则，它允许在一个css文件中导入其他css文件。然而，后果是只有执行到@import时，浏览器才会去下载其他css文件，这导致页面加载起来特别慢
+
+sass`@import`规则特性：
+sass也有一个@import规则，但不同的是，sass的@import规则在生成css文件时就把相关文件导入进来。这意味着所有相关的样式被归纳到了同一个css文件中，而无需发起额外的下载请求
+
+sass`@import`特点：
+- 不需要指明被导入文件的全名，可以省略.sass或.scss文件后缀
+- 
 
 
-
-5.Partials-部分/分布
 6.Modules
 7.Mixins
 8.Extend/Inheritance
