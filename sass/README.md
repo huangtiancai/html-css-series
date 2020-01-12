@@ -299,7 +299,13 @@ sass兼容原生的css，所以它也支持原生的CSS@import
 
 
 三、sass特色和语法
-1。
+1. 特色功能 (Features)
+- 完全兼容 CSS3
+- 在 CSS 基础上增加变量、嵌套 (nesting)、混合 (mixins) 等功能
+- 通过函数进行颜色值与属性值的运算
+- 提供控制指令 (control directives)等高级功能
+- 自定义输出格式
+
 
 
 
