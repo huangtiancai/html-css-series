@@ -2,7 +2,25 @@ a {
   display: block;
   padding: 6px 12px;
   text-decoration: none;
-  color: blue;
+  color: red;
+}
+
+.blue-theme aside {
+  background: blue;
+  color: white;
+}
+
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 100% Helvetiaca, sans-serif;
+  background-color: red;
 }
 
 /*# sourceMappingURL=output.css.map */

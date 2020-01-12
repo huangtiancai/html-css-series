@@ -1,0 +1,12 @@
+{
+  "name": "sass",
+  "version": "1.0.0",
+  "description": "CSS预处理器(css preprocessor)，Sass便是其中之一",
+  "main": "index.js",
+  "scripts": {
+    "dev": "sass --watch input.scss output.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

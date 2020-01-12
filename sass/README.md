@@ -247,23 +247,56 @@ nav {
 
 随着你的样式表变得越来越大，这种写法也很难保持结构清晰。有时，处理这种大量样式的唯一方法就是把它们分拆到多个文件中。`sass`通过对`css原有@import规则`的改进直接支持了这一特性
 
-5.Partials-部分/分布 - 导入SASS文件
+5.
+Partials-部分/分布
+Modules - 模块
 
 CSS`@import`规则特性：
 css有一个特别不常用的特性，即@import规则，它允许在一个css文件中导入其他css文件。然而，后果是只有执行到@import时，浏览器才会去下载其他css文件，这导致页面加载起来特别慢
 
 sass`@import`规则特性：
-sass也有一个@import规则，但不同的是，sass的@import规则在生成css文件时就把相关文件导入进来。这意味着所有相关的样式被归纳到了同一个css文件中，而无需发起额外的下载请求
-
-sass`@import`特点：
+- sass也有一个@import规则，但不同的是，sass的@import规则在生成css文件时就把相关文件导入进来。这意味着所有相关的样式被归纳到了同一个css文件中，而无需发起额外的下载请求
 - 不需要指明被导入文件的全名，可以省略.sass或.scss文件后缀
-- 
+
+sass`@use规则`：
+必须放在其他规则之前;@import没有这个要求
+
+5.1使用SASS部分文件
+1.局部文件：那些专门为@import命令而编写的sass文件，并不需要生成对应的独立css文件，这样的sass文件称为局部文件
+1.sass局部文件的文件名以下划线开头。这样，sass就不会在编译时单独编译这个文件输出css，而只把这个文件用作导入
+2.当你@import一个局部文件时，还可以不写文件的全名，即省略文件名开头的下划线(前缀和后缀均可省略)
+  如：导入themes/_night-sky.scss
+      只需在样式表中写@import "themes/night-sky";
+3.局部文件可以被多个不同的文件引用（当一些样式需要在多个页面甚至多个项目中使用时，这非常有用）
+
+5.2默认变量值
+!default
+
+5.3嵌套导入
+与原生的css不同，sass允许@import命令写在css规则内
+```CSS
+.blue-theme{
+  @import "./blue-theme";
+}
+```
+
+5.4原生的CSS导入???
+sass兼容原生的css，所以它也支持原生的CSS@import
+通常在sass中使用`@import`时，sass会尝试找到对应的`sass文件`并导入进来，但在下列三种情况下会`生成原生的CSS@import`，尽管这会造成浏览器解析css时的额外下载:
+- 被导入文件的名字以.css结尾；
+- 被导入文件的名字是一个URL地址（比如http://www.sass.hk/css/css.css），由此可用谷歌字体API提供的相应服务；
+- 被导入文件的名字是CSS的url()值。
 
 
-6.Modules
-7.Mixins
-8.Extend/Inheritance
-9.Operators
+6.Mixins - 混合器
+
+8.Extend/Inheritance 继承
+```CSS
+%message-shared {}
+```
+
+9.Operators - 操作符
+
 
 
 
