@@ -17,7 +17,7 @@
       1.块元素：div、p、h1~h5、br 
       div就是一个块元素- 所谓的块元素就会独占一行的元素,无论它的内容有多少都会独占一整行；
       注意：
-      1)块元素中的div与其他快块元素如：p、h1~h5、br 是有区别的
+      1)块元素中的div与其他块元素如：p、h1~h5、br 是有区别的
       2)div这个标签没有任何语义，就是一个纯粹的块元素并且不会为它里面的元素设置任何默认样式，不像p元素之间有默认距离
       3)div主要用来对页面进行布局
       
@@ -26,47 +26,34 @@
       常见内联元素：span、a、img、iframe
       注意：span没有任何语义，span标签专门用来选中文字来设置样式
 
-      块元素主要用来做页面中的布局，内联元素主要用来选中文本设置样式】
+      块元素主要用来做页面中的布局，内联元素主要用来选中文本设置样式
       一般情况下值使用块元素去包含内联元素，而不会使用内联元素包含块元素  
-<<<<<<< HEAD
 
       3.注意：
       块元素主要用来做页面中的布局，内联元素主要用来用来选中文本设置样式
       一般情况下只使用块元素去包含内联元素，而不会使用内联元素去包含一个块元素
-
       a元素可以包含任意元素，但是除了本身
       p元素是块元素，但不可以放任意块元素
     
     -->
 
-  =======
-  -->
-  >>>>>>> 30efe1cc297cee50d68877a5c36f7ee3691c63be
   <div style="background-color: red;width: 200px;">我是一个div</div>
   <div style="background-color: yellow;width: 300px;">我是一个div</div>
   <p>我是一个p标签</p>
   <p>我是一个p标签</p>
-  <<<<<<< HEAD <h1>这是一级标题</h1>
-    <h1>这是二级标题</h1>
+  <h1>这是一级标题</h1>
+  <h1>这是二级标题</h1>
+  <hr />
 
-    =======
-    >>>>>>> 30efe1cc297cee50d68877a5c36f7ee3691c63be
+  <span>我是一个span元素</span>
+  <span style="color: burlywood;">我是一个span元素</span>
 
-    <hr />
+  <span style="color: red;">我是一段文字</span>
 
-    <span>我是一个span元素</span>
-    <span style="color: burlywood;">我是一个span元素</span>
-
-    <<<<<<< HEAD <span style="color: red;">我是一段文字</span>
-
-      <div>
-        <span></span>
-      </div>
-
-      =======
-      >>>>>>> 30efe1cc297cee50d68877a5c36f7ee3691c63be
-
-      <span></span>
+  <div>
+    <span></span>
+  </div>
+  <span></span>
 </body>
 
 </html>
