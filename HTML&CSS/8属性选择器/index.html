@@ -7,6 +7,14 @@
     <title>属性选择器</title>
     <style>
       /* CSS 属性选择器通过已经存在的属性名或属性值匹配元素 */
+
+      /*
+      title属性可以给任何标签指定
+      为所有具有title属性的p元素设置一个颜色*/
+      p[title="hello"] {
+        background-color: yellow;
+      }
+
       a {
         color: blue;
       }
@@ -64,6 +72,9 @@
   </head>
 
   <body>
+    <p title="hello">这是一个段落</p>
+    <p title="abc">这是一个段落</p>
+    <p>这是一个段落</p>
     <ul>
       <li><a href="#internal">Internal link</a></li>
       <li><a href="http://example.com">Example link</a></li>
