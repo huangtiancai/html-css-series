@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>margin属性</title>
+    <style>
+      /*width:66% 百分别是占body的百分别*/
+      .ex1 {
+        margin: auto;
+        /*这里margin:0 auto也可以*/
+        width: 66%;
+        background-color: gold;
+      }
+
+      .ex2 {
+        margin: 20px 0px 0px --20px;
+        background-color: gold;
+        width: 66%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="ex1">
+      <!--注意：块级元素的高度是由子元素堆砌撑起来的，如果div内的内容为空页面不显示，没有高度-->
+      margin: auto; background: gold; width: 66%;
+    </div>
+
+    <div class="ex2">
+      margin: 20px 0px 0 -20px; background: gold; width: 66%;
+    </div>
+  </body>
+</html>
