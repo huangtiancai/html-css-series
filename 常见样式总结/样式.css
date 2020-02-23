@@ -21,6 +21,7 @@ button {
   cursor: url(./assets/pic/cursor.cur), pointer !important;
 }
 
+
 /*3
 transition；过渡效果
 */
@@ -191,19 +192,23 @@ APP.vue
    position: relative;
 44 &::before
 45 &:hover
-
+--------------------------------------------------------------------------------------
 Header.vue
+position：fixed
+box-shadow
+&.sub-item
+&:hover > .nav-child
+outline
+-webkit-appearance
+box-sizing
+rotateZ
+transform-origi
 
-46 box-shadow
-47 &.sub-item
-48 &:hover > .nav-child
-49 outline
-50 -webkit-appearance
-51 box-sizing
-52 rotateZ
-53 transform-origi
 
 
+
+
+--------------------------------------------------------------------------------------
 Detail.vue
 54 &:not
 55 :first-child
@@ -213,6 +218,8 @@ Detail.vue
 59 & > .col:first-child{}
 60 border
 61 outline
+
+
 
 Footer.vue
 
@@ -251,8 +258,6 @@ Home
 Link
 
 Search
-
-
 */
 
 .hav {
