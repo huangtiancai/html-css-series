@@ -194,7 +194,9 @@ APP.vue
 45 &:hover
 --------------------------------------------------------------------------------------
 Header.vue
-position：fixed
+position：fixed         - 固定定位
+top/right/bottom/left
+z-index: 1;             - 指定一个元素的堆叠顺序
 box-shadow
 &.sub-item
 &:hover > .nav-child

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>z-index - 指定一个元素的堆叠顺序</title>
+</head>
+<style>
+  img {
+    position: absolute;
+    left: 100px;
+    top: 15px;
+    /*
+    z-index 拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。
+    z-index:小于0 => 更低堆叠顺序 => 图片在其它元素之后
+    z-indx:大于0 => 更高堆叠顺序  => 图片在其它元素之前
+    */
+    z-index: -1;
+  }
+</style>
+
+<body>
+  <h1>This is a heading</h1>
+  <img src="w3css.gif" width="100" height="140" />
+  <p>因为图像元素设置了 z-index 属性值为 -1, 所以它会显示在文字之后。</p>
+</body>
+
+</html>
