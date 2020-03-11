@@ -137,7 +137,7 @@ left: unset;
 
 /*
 APP.vue
-1 cursor
+1 cursor      cursor: url(./assets/pic/pointer.cur), default; 默认指针，通常是箭头
 2 !important
 3 transition
 4 list-style
@@ -197,8 +197,8 @@ Header.vue
 position：fixed         - 固定定位
 top/right/bottom/left
 z-index: 1;             - 指定一个元素的堆叠顺序
-box-shadow
-&.sub-item
+box-shadow              - 添加阴影
+&.sub-item              - 
 &:hover > .nav-child
 outline
 -webkit-appearance
