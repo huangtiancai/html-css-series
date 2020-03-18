@@ -1,3 +1,8 @@
+html
+实体（特殊字符串）
+
+
+
 css
 css：属性 - property; 属性值 - value
 css规则集/规则：选择器、声明、属性、属性值
