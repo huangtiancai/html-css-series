@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>embed-object</title>
+</head>
+
+<body>
+  <!-- <embed>和<object>元素 -->
+  <!-- <embed>和<object>元素的功能不同于<iframe>
+      这些元素是用来嵌入多种类型的外部内容的通用嵌入工具，
+      其中包括像Java小程序和Flash，PDF（可在浏览器中显示为一个PDF插件）这样的插件技术，
+      甚至像视频，SVG和图像的内容 
+  -->
+
+<!-- <embed 
+  src="whoosh.swf" 
+  quality="medium" 
+  bgcolor="#ffffff"
+  width="550" height="400"
+  name="whoosh" 
+  align="middle"
+  allowScriptAccess="sameDomain"
+  allowFullScreen="false" type="application/x-shockwave-flash"
+  pluginspage="http://www.macromedia.com/go/getflashplayer"> -->
+
+
+  <object 
+    ata="mypdf.pdf" 
+    type="application/pdf" 
+    width="800" height="1200" 
+    typemustmatch>
+      <p>You don't have a PDF plugin, but you can 
+        <a href="nginx.pdf">download the PDF file.
+        </a>
+      </p>
+  </object>
+
+</body>
+
+</html>

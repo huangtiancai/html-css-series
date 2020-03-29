@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>video/audio</title>
+</head>
+<body>
+    <!--  flash => HTML5标准  -->
+    <!-- video标签
+      属性：
+        src
+        controls:开始、停止、调整音量、控制视频和音频的回放功能
+        width/height
+        autoplay:这个属性会使音频和视频内容立即播放,不建议使用
+        lop:让音频或者视频文件循环播放。同样不建议使用，除非有必要
+        muted:这个属性会导致媒体播放时，默认关闭声音
+        poster:这个属性指向了一个图像的URL，这个图像会在视频播放前显示。通常用于粗略的预览或者广告
+        preload:用来缓冲较大的文件，有3个值可选:
+            "none" ：不缓冲
+            "auto" ：页面加载后缓存媒体文件
+            "metadata" ：仅缓冲文件的元数据
+        <video> 标签内的段落：这个叫做后备内容 — 当浏览器不支持 <video> 标签的时候，它将会显示出来，它使我们能够对旧的浏览器做一些兼容处理
+    -->
+    <video src="content/rabbit320.webm" controls>
+      <p>你的浏览器不支持HTML5视频。可点击<a href="content/rabbit320.mp4">此链接</a>观看</p>
+    </video>
+
+    
+    <!--多格式支持-->
+    <!--问题：
+      使用像 Safari 或者 Internet Explorer 这些浏览器来访问上面的链接。
+      视频并不会播放，这是因为不同的浏览器对视频格式的支持不同
+      所以需要使用几个不同格式的文件来兼容不同的浏览器
+    -->
+
+    <!--
+      1.将 src 属性从 <video> 标签中移除，转而将它放在几个单独的标签 <source> 当中
+      2.浏览器将会检查 <source> 标签，并且播放第一个与其自身 codec 相匹配的媒体。
+        你的视频应当包括 WebM 和 MP4 两种格式，这两种在目前已经足够支持大多数平台和浏览器。
+      3.每个<source> 标签页含有一个 type 属性，这个属性是可选的
+        但是建议你添加上这个属性 — 它包含了视频文件的 MIME types ，
+        同时浏览器也会通过检查这个属性来迅速的跳过那些不支持的格式。
+        如果你没有添加 type       属性，浏览器会尝试加载每一个文件，直到找到一个能正确播放的格式，这样会消耗掉大量的时间和资源
+    -->
+    <video controls>
+      <source src="content/rabbit320.webm" type="video/webm">
+      <source src="content/rabbit320.mp4" type="video/mp4">
+      <p>你的浏览器不支持HTML5视频。可点击<a href="content/rabbit320.mp4">此链接</a>观看</p>
+    </video>
+
+
+    <!--其他 <video> 特性-->
+    <video controls width="400" height="400"  loop muted preload="auto" poster="content/poster.png">
+      <source src="content/rabbit320.webm" type="video/webm">
+      <source src="content/rabbit320.mp4" type="video/mp4">
+      <p>你的浏览器不支持HTML5视频。可点击<a href="content/rabbit320.mp4">此链接</a>观看</p>
+    </video>
+
+    <h1>视频欣赏</h1>
+    <button id="startBtn">点我播放</button>
+    <button id="stopBtn">停止媒体播放并停止媒体下载</button>
+    <br/>
+    <video id="liziqi" controls width="800" height="550" loop  preload="auto" poster="">
+      <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" type="video/mp4">
+      <p>你的浏览器不支持HTML5视频。可点击<a href="content/liziqi.mp4">此链接</a>观看</p>
+    </video>
+
+
+    <!--<audio> 标签
+      <audio> 标签与 <video> 标签的使用方式几乎完全相同，有一些细微的差别
+      特性：
+      音频播放器所占用的空间比视频播放器要小，由于它没有视觉部件 — 你只需要显示出能控制音频播放的控件
+      1.<audio> 标签不支持 width/height 属性 — 由于其并没有视觉部件，也就没有可以设置 width/height 的内容。
+      2.同时也不支持 poster 属性 — 同样，没有视觉部件
+    -->
+    <h1>音频</h1>
+    <audio id="demo" controls>
+      <source src="content/viper.mp3" type="audio/mp3">
+      <source src="content/viper.ogg" type="audio/ogg">
+      <p>你的浏览器不支持 HTML5 音频，可点击<a href="content/viper.mp3">此链接</a>收听。</p>
+    </audio>  
+
+    <div>
+      <button onclick="document.getElementById('demo').play()">播放声音</button>
+      <button onclick="document.getElementById('demo').pause()">暂停声音</button>
+      <button onclick="document.getElementById('demo').volume+=0.1">提高音量</button>
+      <button onclick="document.getElementById('demo').volume-=0.1">降低音量</button>
+    </div>
+
+
+    <!--显示音轨文本:字幕-->
+    <!-- WebVTT 格式 WebVTT 是一个格式，用来编写文本文件; <track> 标签 -->
+    
+
+    <script>
+      // 媒体回放控制
+      var start = document.getElementById('startBtn');
+     
+      start.onclick = function(){
+        var v = document.getElementById('liziqi');
+        v.play();
+      }
+
+      // 终止媒体下载
+      var stop  = document.getElementById('stopBtn');
+      stop.onclick = function(){
+        var mediaElement = document.getElementById("liziqi");
+        mediaElement.pause();
+        // removeAttribute() 操作并不干净
+        mediaElement.removeAttribute("src"); 
+        // mediaElement.src = '';
+      }
+      
+      // 在媒体中查找
+      
+      // 标记播放范围
+
+      // 备选项:1.使用Flash 2.使用Java 小程序播放Ogg视频
+      
+      
+
+    </script>
+</body>
+</html>
