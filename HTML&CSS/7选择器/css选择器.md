@@ -11,7 +11,7 @@
 
 #### 组合器示例
 
-```
+```css
 /* 基本的table样式 */
 table {
     font: 1em sans-serif;
@@ -61,7 +61,7 @@ table th+td {
 
 通过相互间用逗号分隔的多个选择器所形成的组，可以一次性将同一规则同时应用到多组选定元素。例如：
 
-```
+```css
 p, li {
   font-size: 1.6em;
 }
@@ -69,7 +69,7 @@ p, li {
 
 或者
 
-```
+```css
 h1, h2, h3, h4, h5, h6 {
   font-family: helvetica, 'sans serif';
 }
