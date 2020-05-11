@@ -5,11 +5,62 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>浮动</title>
+  <style>
+    body {
+      /*在宽度达到900px之前，整个视图的宽度占到90%，
+        在超过900px后，它将保持在这个宽度（900px）
+        并在视口中居中
+      */
+      width: 90%;
+      /*控制虽大宽度，调整浏览器窗口，body内容宽度会变化，变大时，当width>900.时宽度不在变化*/
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    p {
+      line-height: 2;
+      word-spacing: 0.1rem;
+    }
+
+    /*将使用float来让图片周围的文本浮起来
+    浮动元素：img元素
+    */
+    img {
+      float: left;
+      /*内容仍然遵循盒子模型诸如外边距和边界,设置一下图片右侧的外边距就能阻止右侧的文字紧贴着图片*/
+      margin-right: 30px;
+    }
+
+    /*
+    浮动工作原理：浮动元素 (这个例子中的<img> 元素)会脱离正常的文档布局流，
+                  并吸附到其父容器的左边 (这个例子中的<body>元素)
+      在正常布局中位于该浮动元素之下的内容，此时会围绕着浮动元素，填满其右侧的空间。
+    */
+  </style>
 </head>
 
 <body>
+  <h1>Simple float example</h1>
 
+  <img src="https://mdn.mozillademos.org/files/13340/butterfly.jpg"
+    alt="A pretty butterfly with red, white, and brown coloring, sitting on a large leaf">
+
+  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam dolor, eu lacinia lorem placerat
+    vulputate. Duis felis orci, pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies
+    tellus laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum, tristique sit amet orci vel,
+    viverra
+    egestas ligula. Curabitur vehicula tellus neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat
+    volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros pharetra congue. Duis ornare egestas
+    augue
+    ut luctus. Proin blandit quam nec lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.</p>
+
+  <p>Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada ultrices. Phasellus turpis est, posuere
+    sit
+    amet dapibus ut, facilisis sed est. Nam id risus quis ante semper consectetur eget aliquam lorem. Vivamus tristique
+    elit dolor, sed pretium metus suscipit vel. Mauris ultricies lectus sed lobortis finibus. Vivamus eu urna eget velit
+    cursus viverra quis vestibulum sem. Aliquam tincidunt eget purus in interdum. Cum sociis natoque penatibus et magnis
+    dis parturient montes, nascetur ridiculus mus.</p>
 </body>
 
 </html>
