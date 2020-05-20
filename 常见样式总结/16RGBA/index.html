@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RGBA</title>
+</head>
+<style>
+  /*
+  rgba() 函数使用红(R)、绿(G)、蓝(B)、透明度(A)的叠加来生成各式各样的颜色。
+  RGBA 即红色、绿色、蓝色、透明度（英语：Red, Green, Blue、Alpha）
+  Alpha 越大越不透明: 0 - 完全透明 ~ 1 - 完全不透明 
+  */
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .box {
+    position: absolute;
+    left: 400px;
+  }
+
+  p {
+    width: 250px;
+  }
+
+  #p1 {
+    background-color: rgba(255, 0, 0, 0.1);
+  }
+
+  #p2 {
+    background-color: rgba(255, 0, 0, 0.4);
+  }
+
+  #p3 {
+    background-color: rgba(255, 0, 0, 0.7);
+  }
+
+  #p4 {
+    background-color: rgba(255, 0, 0, 1);
+  }
+
+  #p5 {
+    background-color: rgba(0, 255, 0, 0.1);
+  }
+
+  #p6 {
+    background-color: rgba(0, 255, 0, 0.4);
+  }
+
+  #p7 {
+    background-color: rgba(0, 255, 0, 0.7);
+  }
+
+  #p8 {
+    background-color: rgba(0, 255, 0, 1);
+  }
+
+  #p9 {
+    background-color: rgba(0, 255, 0, 0.1);
+  }
+
+  #p10 {
+    background-color: rgba(0, 0, 255, 0.4);
+  }
+
+  #p11 {
+    background-color: rgba(0, 0, 255, 0.7);
+  }
+
+  #p12 {
+    background-color: rgba(0, 0, 255, 1);
+  }
+</style>
+
+<body>
+  <div class="box">
+    <p id="p1">/* 10% opaque(不透明) red*/</p>
+    <p id="p2">/* 40% opaque(不透明) red*/</p>
+    <p id="p3">/* 70% opaque(不透明) red*/</p>
+    <p id="p4">/* 100% opaque(不透明) red*/</p>
+
+    <p id="p5">/* 10% opaque(不透明) green*/</p>
+    <p id="p6">/* 40% opaque(不透明) green*/</p>
+    <p id="p7">/* 70% opaque(不透明) green*/</p>
+    <p id="p8">/* 100% opaque(不透明) green*/</p>
+
+    <p id="p9">/* 10% opaque(不透明) blue*/</p>
+    <p id="p10">/* 40% opaque(不透明) blue*/</p>
+    <p id="p11">/* 70% opaque(不透明) blue*/</p>
+    <p id="p12">/* 100% opaque(不透明) blue*/</p>
+  </div>
+
+</body>
+
+</html>
