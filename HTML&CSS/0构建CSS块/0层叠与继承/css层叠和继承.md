@@ -5,14 +5,15 @@
 1. 重要性（Importance）
 2. 专用性（Specificity）
 3. 源代码次序（Source order）
+
 #### 重要性
 在CSS中，有一个特别的语法可以让一条规则总是优先于其他规则：`!important`。把它加在属性值的后面可以使这条声明有无比强大的力量。  
-```
+```html
 <p class="better">This is a paragraph.</p>
 <p class="better" id="winning">One selector to rule them all!</p>
 ```
 
-```
+```css
 /*id/class选择器优先于element选择器,即使element选择器在后面也不会覆盖*/
 /*比起class而言id专用性更高,红色背景色和1pixel的黑色边框都应应用于第二元素，第一个元素获得灰色背景色，没有边框*/
 #winning{
