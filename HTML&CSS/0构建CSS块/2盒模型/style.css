@@ -1,0 +1,34 @@
+/* General styles */
+
+body {
+    margin: 0;  /*body的外边距为0，如果设置有值的话，整个body会有个空白的外边距,另外header,main,footer也可以分别设置外边距margin*/
+  }
+  
+  body > * {
+    font-size: 20px;
+    padding: 10px;
+    border: 20px solid rgba(0,0,0,0.5);
+    margin: 0;
+  }
+  
+  /* specific boxes */
+  
+  header, footer {
+    background-color: blue;
+    color: white;
+  }
+
+  header {
+    
+ }
+  
+  main {
+    background-color: yellow;
+    margin-bottom: 20px;     /*1.设置main的下外边距为20px*/
+  }
+  
+  footer {
+    margin-top: 15px;        /*2.设置footer的上外边距为15px*/
+    /*注意，第二个操作对布局没有任何影响——这就是外边距塌陷；较小的margin有效宽度为0，只留下值较大的margin。*/
+  }
+  

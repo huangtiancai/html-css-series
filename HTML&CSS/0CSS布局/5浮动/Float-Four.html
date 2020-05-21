@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Float: Task 4</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .box {
+      background-color: rgb(191, 233, 250);
+      /*由于父级元素没有高度，下面的元素会顶上去，造成页面的塌陷*/
+      /*清除浮动*/
+      overflow: hidden;
+      /*兼容IE低版本*/
+      zoom: 1;
+    }
+
+    .kid {
+      width: 100px;
+      height: 100px;
+      /*
+      一般而言，父级元素不设置高度时，高度由随内容增加自适应高度
+      当父级元素内部的子元素全部都设置浮动float之后，子元素会脱离标准流，不占位，
+      父级元素检测不到子元素的高度，父级元素高度为0。那么问题来了
+      */
+      float: left;
+    }
+
+    .kid1 {
+      background: tomato;
+    }
+
+    .kid2 {
+      background: yellowgreen;
+    }
+
+    .wrap {
+      width: 300px;
+      height: 150px;
+      background: skyblue;
+      color: white;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="box">
+    <div class="kid kid1">One</div>
+    <div class="kid kid2">Two</div>
+  </div>
+  <div class="wrap">其他部分</div>
+
+</body>
+
+</html>

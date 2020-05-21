@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>清除去浮动</title>
+</head>
+
+<style>
+  body {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  div:nth-of-type(1) {
+    width: 36%;
+    float: left;
+  }
+
+  div:nth-of-type(2) {
+    width: 30%;
+    float: left;
+    margin-left: 4%;
+  }
+
+  div:nth-of-type(3) {
+    width: 26%;
+    float: right;
+  }
+
+  /*
+  第三个div下的footer页脚在最长的列旁边环绕着，这看起来很糟糕
+  我们希望页脚保持在底部，在所有的列下面 => clear属性 => 此处停止浮动
+  clear 可以取三个值：
+    left：停止任何活动的左浮动
+    right：停止任何活动的右浮动
+    both：停止任何活动的左右浮动
+
+*/
+  /*清除浮动*/
+  footer {
+    /* clear: both; */
+  }
+
+  /*浮动问题:
+  1.盒子整个宽度不好计算
+  2.浮动项目的背景高度
+  3.清除浮动会变复杂
+  */
+
+  /*当应用上背景、外边距、内边距等样式后，整个宽度不好计算*/
+  .column,
+  footer {
+    background-color: burlywood;
+    padding: 1%;
+    border: 2px solid black;
+
+  }
+
+  /*由于内边距和边界引入的额外宽度,一行容纳不下三列了，因此第三列下降到另外两列之下*/
+  /*正常的布局被损坏*/
+  /*更改盒模型，使得盒子宽度=content+padding+border,而不仅是content,
+  当增加内边距和边界宽度时，不会使盒子更宽，而是是内容调整得更窄*/
+  * {
+    box-sizing: border-box;
+  }
+
+  /*修正页脚紧贴在最长列上*/
+  footer {
+    /* clear: both; */
+    margin-top: 4%;
+    /*不起作用:非浮动元素的外边距不能用于它们和浮动元素之间来创建空间*/
+  }
+
+  /*解决
+    1.在HTML的代码里添加新的<div> 元素，位于在<footer>标签的上方
+    2.移除页脚样式规则中的clear:both,取儿代之放在clearfix div中
+    3.clearfix div 背景、内边距和边界与我们的列和页脚相同，可以给每个列块一个类 class="column"
+     让改变盒子样式的规则只应用于 .column,footer{} 这些块和页脚
+  */
+  .clearfix {
+    clear: both;
+  }
+
+  /*浮动项目的背景高度*/
+  .column {
+    /*每个列块的高度都是不同的
+    不同列块的内容量不能保证相同，所以不能通过给列设置固定height来解决
+    强行设置固定height 列块的内容会溢出
+    */
+    /* height: 550px; */
+  }
+
+  /*
+  1.使用flexbox - 弹性布局
+  2.将这些列的背景颜色设置为父元素的背景颜色，这样您就不会看到高度是不同的。这是目前最好的选择
+  3.将它们设置为固定的高度，并使内容滚动overflow (参见我们溢流部分的示例)
+  清除浮动会变复杂
+  */
+</style>
+
+<body>
+  <!--两列布局-->
+
+  <h1>2 column layout example</h1>
+  <div class="column">
+    <h2>First column</h2>
+    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam dolor, eu lacinia lorem placerat
+      vulputate. Duis felis orci, pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies
+      tellus laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum, tristique sit amet orci vel,
+      viverra egestas ligula. Curabitur vehicula tellus neque, ac ornare ex malesuada et. In vitae convallis lacus.
+      Aliquam erat volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros pharetra congue. Duis
+      ornare egestas augue ut luctus. Proin blandit quam nec lacus varius commodo et a urna. Ut id ornare felis, eget
+      fermentum sapien.</p>
+  </div>
+
+  <div class="column">
+    <h2>Second column</h2>
+    <p>Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada ultrices. Phasellus turpis est, posuere
+      sit amet dapibus ut, facilisis sed est. Nam id risus quis ante semper consectetur eget aliquam lorem. Vivamus
+      tristique elit dolor, sed pretium metus suscipit vel. Mauris ultricies lectus sed lobortis finibus. Vivamus eu
+      urna
+      eget velit cursus viverra quis vestibulum sem. Aliquam tincidunt eget purus in interdum. Cum sociis natoque
+      penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+  </div>
+
+  <div class="column">
+    <h2>Third column</h2>
+    <p>Nam consequat scelerisque mattis. Duis pulvinar dapibus magna, eget congue purus mollis sit amet. Sed euismod
+      lacus
+      sit amet ex tempus, a semper felis ultrices. Maecenas a efficitur metus. Nullam tempus pharetra pharetra. Morbi in
+      leo mauris. Nullam gravida ligula eros, lacinia sagittis lorem fermentum ut. Praesent dapibus eros vel mi pretium,
+      nec convallis nibh blandit. Sed scelerisque justo ac ligula mollis laoreet. In mattis, risus et porta scelerisque,
+      augue neque hendrerit orci, sit amet imperdiet risus neque vitae lectus. In tempus lectus a quam posuere
+      vestibulum.
+      Duis quis finibus mi. Nullam commodo mi in enim maximus fermentum. Mauris finibus at lorem vel sollicitudin.</p>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <footer>
+    <p>&copy;2016 your imagination. This isn't really copyright, this is a mockery of the very concept. Use as you wish.
+    </p>
+  </footer>
+</body>
+
+</html>
