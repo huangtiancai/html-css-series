@@ -3,8 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>层叠和继承</title>
-  <link rel="stylesheet" href="style.css">
+  <title>层叠 - 规则混合</title>
   <style>
     /*specificity:0002 */
     P strong {
@@ -23,6 +22,11 @@
         因为专用性的关系,第一条规则中的color属性覆盖掉了第二条中的颜色值。
         但是，对于第一条中的 background-color和第二条中的text-decoration 的属性都在strong元素之中得到了体现。
         你也注意到了这个元素之中的字体是加粗的：这是浏览器默认的样式规则。
+
+        最终样式组成：
+        1.浏览器默认样式（如果不清除）
+        2.第一个规则属性
+        3.第二个规则属性
         */
   </style>
 </head>
