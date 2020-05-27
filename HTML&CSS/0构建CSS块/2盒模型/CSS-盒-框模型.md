@@ -16,6 +16,7 @@
 - 内边距、外边距以及边框会被应用但是不会把其他处于 inline 状态的盒子推开
 - a、span...
 
+
 mdn:https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/The_box_model
 
 3.内部和外部显示类型
