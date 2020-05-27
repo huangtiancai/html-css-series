@@ -51,15 +51,15 @@ display: grid; =>网格
 
 用法：
 
-```bash
-/* <display-outside> values
-外部显示类型 */
+```CSS
+/* <display-outside> values */
+/* 外部显示类型 */
 display: block;
 display: inline;
 display: run-in;
 
-/* <display-inside> values
-内部显示类型 */
+/* <display-inside> values */
+/* 内部显示类型 */
 display: flow;
 display: flow-root;
 display: table;
@@ -122,7 +122,7 @@ mdn:https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin
 
 html:
 
-```
+```css
 <header>Header</header>
 <main>Main content</main>
 <footer>Footer</footer>
