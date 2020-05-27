@@ -128,9 +128,9 @@ html:
 <footer>Footer</footer>
 ```
 
-css:'
+css:
 
-```
+```css
 /* General styles */
 
 body {
@@ -168,7 +168,7 @@ footer {
 
 css2:
 
-```
+```css
 /* General styles */
 
 body {
@@ -288,20 +288,20 @@ height = 内容的高度
    width 和 height 属性`包括内容，内边距和边框，但不包括外边距`。
    `尺寸计算公式`：
 
-```
+```css
 width = border + padding + 内容的宽度
 height = border + padding + 内容的高度
 ```
 
 例子：
 
-```
+```html
 <div class="content-box">Content box</div>
 <br>
 <div class="border-box">Border box</div>
 ```
 
-```
+```css
 div {
     width: 160px;
     height: 80px;
@@ -340,7 +340,7 @@ div {
 - `visible`: 当内容过多，溢流的内容被显示在盒子的外边（这个是默认的行为）
   首先是 HTML 代码:
 
-```
+```html
 <p class="autoscroll">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     Mauris tempus turpis id ante mollis dignissim. Nam sed
@@ -371,7 +371,7 @@ div {
 
 CSS 代码：
 
-```
+```css
 .autoscroll {
     overflow: auto; /*出现滚动条来让我们滚动查看所有的内容*/
 }
@@ -389,7 +389,7 @@ CSS 代码：
 它们被应用到一个盒子里，默认情况下，背景延伸到了边界外沿(`边框border的外沿`)。这通常是 OK 的，但是在一些情况下比较讨厌（假使你有一个平铺的背景图，你`只想要它延伸到内容(content)的边沿`会怎么做？），该行为可以通过设置盒子的`background-clip属性`来调整。
 首先是 HTML 代码:
 
-```
+```html
 <div class="default"></div>
 <div class="padding-box"></div>
 <div class="content-box"></div>
@@ -397,7 +397,7 @@ CSS 代码：
 
 CSS 代码：
 
-```
+```css
 div {
     width: 60px;
     height: 60px;
@@ -435,7 +435,7 @@ div {
 
 HTML 代码:
 
-```
+```html
 <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     <span class="inline">Mauris tempus turpis id ante mollis dignissim.</span>
@@ -457,7 +457,7 @@ HTML 代码:
 
 CSS 代码：
 
-```
+```css
 p {
     padding: 1em;
     border: 1px solid black;
@@ -476,8 +476,4 @@ span {
 .inline-block {
     display: inline-block;
 }
-```
-
-```
-
 ```
