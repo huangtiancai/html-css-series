@@ -30,7 +30,8 @@ mdn:https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/The_box_m
   默认规则：
   块级元素： - 块级元素按照在在文档中书写的顺序放置 - 每一个块级元素会在上一个元素下面另一起一行（块级元素的特性）=> 通过设置好的 margin 分隔 - 英语，或者其他水平书写、自上而下模式里，块级元素是垂直组织的
   行内元素： - 只要在其父级块级元素的宽度内有足够的空间，它们与其他行内元素、相邻的文本内容（或者被包裹的）被安排在同一行。 - 如果空间不够，溢出的文本或元素将移到新的一行
-  注意：如果两个相邻的元素都设置了 margin 并且两个 margin 有重叠，那么更大的设置会被保留，小的则会消失，被称为外边距塌陷
+
+  注意：如果两个相邻的元素都设置了 margin 并且两个 margin 有重叠，那么更大的设置会被保留，小的则会消失，被称为外边距塌陷 => 解决边距塌陷？？？
 
 mdn:https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Normal_Flow
 
