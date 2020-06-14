@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>background-clip</title>
+  <link rel="stylesheet" href="">
+  <style>
+    #gradient {
+      height: 200px;
+      /*处理不支持的浏览器的显示*/
+      background-color: red;
+      background: linear-gradient(red, yellow);
+    }
+
+    #gradient1 {
+      height: 200px;
+      /*处理不支持的浏览器的显示*/
+      background-color: red;
+      background: linear-gradient(to right, red, yellow);
+    }
+
+    #gradient2 {
+      height: 200px;
+      /*处理不支持的浏览器的显示*/
+      background-color: red;
+      background: linear-gradient(to right bottom, red, yellow);
+    }
+
+    #gradient3 {
+      height: 200px;
+      /*处理不支持的浏览器的显示*/
+      background-color: red;
+      background: linear-gradient(90deg, red, yellow);
+    }
+
+    #grad {
+      width: 200px;
+      height: 150px;
+      background-color: red;
+      background: radial-gradient(circle, red, yellow, green);
+    }
+  </style>
+</head>
+
+<body>
+  <p><strong>圆形 Circle：</strong></p>
+  <div id="grad"></div>
+  <div id="gradient"></div>
+  <div id="gradient1"></div>
+  <div id="gradient2"></div>
+  <div id="gradient3"></div>
+
+</body>
+
+</html>
