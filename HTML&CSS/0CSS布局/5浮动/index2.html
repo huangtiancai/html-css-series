@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>清除浮动</title>
+  <style>
+    /*方法1：给浮动元素的祖先元素加高度*/
+    /* div {
+      height: 30px;
+    } */
+
+    li {
+      float: left;
+      width: 100px;
+      height: 30px;
+      background-color: pink;
+    }
+
+    /*2.clear清除浮动*/
+    .box {
+      clear: both;
+    }
+
+    .h {
+      height: 10px;
+    }
+
+    #div1 {
+      background-color: green;
+    }
+
+    p {
+      background-color: red;
+      width: 100px;
+      height: 100px;
+      float: left;
+    }
+
+    .cl {
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="box1">
+    <ul>
+      <li>生命壹号1</li>
+      <li>生命壹号2</li>
+      <li>生命壹号3</li>
+      <li>生命壹号4</li>
+    </ul>
+  </div>
+
+  <div class="box h"></div>
+
+  <div class="box2">
+    <ul>
+      <li>浮动1</li>
+      <li>浮动2</li>
+      <li>浮动3</li>
+      <li>浮动4</li>
+    </ul>
+  </div> -->
+
+  <div id="div1">
+    <p></p>
+    <div class="cl"></div>
+  </div>
+</body>
+
+</html>
