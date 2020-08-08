@@ -1,9 +1,0 @@
-// mixin定义函数（多个东西放在一起）
-@mixin transform($property){
-  -webkit-transform: $property;
-  -ms-transform: $property;
-  transform:$property;
-}
-
-// 调用的时候@include对应的函数名称，并把属性放进去
-.box{@include transform(rotate(30deg))}
