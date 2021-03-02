@@ -6,7 +6,7 @@
 - margin:0 auto;
 使块状元素居中（必须定宽）- 让盒子自己水平居中
   - 定宽
-  - 左右margin”值为“auto”，上下magin任意值，来实现居中
+  - 左右margin”值为"auto"，上下magin任意值，来实现居中
 ```css
 /* width: 300px; */
 width: 30%;
