@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>居中</title>
+  <style>
+    /* 水平居中 */
+
+    /* 行内元素水平居中，父级设置 text-align:center */
+    .wrapper0{
+      background-color: #cfe8dc;
+      text-align: center;
+    }
+
+    /* 行内元素转化成块元素并设置宽度，设置margin : 0 auto; */
+    .wrapper1{
+      background-color: #cfe8dc;
+    }
+    .wrapper1 a{
+      display: block;
+
+      background-color: skyblue;
+      width: 100px;
+      margin:0 auto;
+
+      /* text-align: center; */
+    }
+
+    .wrapper2{
+      background-color: #cfe8dc;
+      text-align: center;
+    }
+    .wrapper3{
+      display: block;
+    }
+
+
+    /* 图片(行内元素)居中 */
+    /* .wrapper2{
+      background-color: #cfe8dc;
+      text-align: center;
+    }
+    .wrapper2 img{
+      width: 100px;
+    } */
+
+
+    /* .wrapper3 {
+      background-color: #cfe8dc;
+    }
+    .wrapper3 img{
+      width: 100px;
+      display: block;
+      margin:0 auto;
+    } */
+
+    /* 单个块级元素居中 */
+    /* .wrapper4{
+      background-color: #cfe8dc;
+      text-align:center;
+    } */
+
+    
+  </style>
+</head>
+<body>
+  <div class="wrapper0">
+    <a href="">Zero</a>
+  </div>
+  <br>
+  <div class="wrapper1">
+    <a href="">One</a>
+  </div>
+  <br>
+  <div class="wrapper2">
+    <span>Two</span>
+  </div>
+  <br>
+  <div class="wrapper3">
+    <span>Three</span>
+  </div>
+  <br>
+
+
+  <!-- <div class="wrapper2">
+    <img src="https://cn.vuejs.org/images/logo.png?_sw-precache=cf23526f451784ff137f161b8fe18d5a" alt="">
+  </div>
+
+  <br>
+
+  <div class="wrapper3">
+    <img src="https://cn.vuejs.org/images/logo.png?_sw-precache=cf23526f451784ff137f161b8fe18d5a" alt="">
+  </div>
+  <br> -->
+  <div class="wrapper4">
+    <!-- <div>单个块级元素居中</div> -->
+    单个块级元素居中
+  </div>
+
+
+</body>
+</html>
