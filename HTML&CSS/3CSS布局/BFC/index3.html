@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/spacingjs" defer></script>
+  <style>
+    .container {
+      border: 1px solid red;
+      overflow: hidden;
+    }
+    .cube{
+      background-color: blue;
+      width: 100px;
+      height: 100px;
+      margin: 100px;
+      float: left;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    为子元素添加了浮动，使它脱离了文档流，只剩下2px的边距高度（高度塌陷）
+    通过添加overflow: hidden;属性触发父容器的BFC，
+    那么父容器将会包裹着子容器，从而达到清除浮动的作用
+  -->
+  <div class="container">
+    <div class="cube"></div>
+  </div>
+</body> 
+</html>

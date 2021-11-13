@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iframe</title>
+  <style>
+    #if{
+      /*固定宽高*/
+      /* width:800px;
+      height:600px;   */
+    
+    
+      /*在自适应布局页面上如何让iframe保持高宽比例:使用一种新的css长度单位：vm、vh
+        vw：视口的最大宽度，1vw=视口宽度的百分之一；
+        vh：视口得最大高度，1vh=视口高度的百分之一；
+        如60vw占最大宽度的60% 在pc或者移动端都是这个比例
+      */
+      width: 60vw;
+      height: 40vw;
+
+    }
+  </style>
+</head>
+<body>
+  <!--
+    <iframe>, <embed> 和<object> 元素。
+    <iframe>用于嵌入其他网页，
+    另外两个元素则允许您嵌入PDF，SVG，甚至Flash — 一种正在被淘汰的技术，但您仍然会时不时的看到它。
+  -->
+
+  <!-- <iframe>基本要素：
+      allowfullscreen：如果设置，<iframe>则可以通过全屏API设置为全屏模式（稍微超出本文的范围）。
+      frameborder：如果设置为1，则会告诉浏览器在此框架和其他框架之间绘制边框，这是默认行为。0删除边框。不推荐这样设置，因为在CSS中可以更好地实现相同的效果。border: none;
+      src：该属性与<video>/<img>一样包含指向要嵌入文档的URL路径。
+      width 和 height：这些属性指定您想要的iframe的宽度和高度。
+  -->
+
+  <iframe id="if"
+    src="//player.bilibili.com/player.html?aid=49079760&bvid=BV1Lb411K7cN&cid=85956757&page=1" 
+    scrolling="no"
+    border="0" 
+    frameborder="no" 
+    framespacing="0" 
+    allowfullscreen="true">
+  </iframe>
+
+
+  <h1>youtube - relaxing music live</h1>
+  <iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/XULUBg_ZcAU" 
+    frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+
+  <h1>youtube -《航拍中国》第三集 新疆 | CCTV纪录 </h1>
+  <iframe width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/1zSsoTqtlbQ" 
+    frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+    <p> 
+      <a href="https://www.youtube.com/embed/1zSsoTqtl">
+        Fallback link for browsers that don't support iframes
+      </a>
+    </p>
+  </iframe>
+
+</body>
+</html>

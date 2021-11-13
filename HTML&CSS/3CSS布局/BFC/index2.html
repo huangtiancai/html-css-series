@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/spacingjs" defer></script>
+  <style>
+    .container {
+      overflow: hidden;
+    }
+    .cube{
+      background-color: blue;
+      width: 100px;
+      height: 100px;
+      margin: 100px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 理论200px -> 上下间距为100px 块的上外边距和下外边距发生合并，其大小为单个边距的最大值
+      外边距重叠现象
+
+      如何解决？
+      将两个div放置入不同的BFC当中（通过添加overflow: hidden;属性触发父容器的BFC），
+      两个BFC的内容不会相互干扰
+  -->
+  
+  <div class="container">
+    <div class="cube"></div>
+  </div>
+  <div class="container">
+    <div class="cube"></div>
+  </div>
+</body> 
+</html>

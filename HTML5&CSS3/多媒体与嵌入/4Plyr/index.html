@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>plyr</title>
+  <script src="js/plyr.js"></script>
+  <link rel="stylesheet" href="css/plyr.css" />
+  <style>
+    /* This is purely for the demo */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .plyr {
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <video controls crossorigin playsinline poster="poster.png" id="player">
+      <!-- Video files -->
+      <source src="rabbit320.mp4" type="video/mp4" size="576">
+      <source src="rabbit320.mp4" type="video/mp4" size="720">
+      <source src="rabbit320.mp4" type="video/mp4" size="1080">
+      <source src="rabbit320.mp4" type="video/mp4" size="1440">
+    </video>
+  </div>
+
+  <!-- 嵌入 YouTube -->
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // This is the bare minimum JavaScript. You can opt to pass no arguments to setup.
+      const player = new Plyr('#player');
+
+      // Expose
+      window.player = player;
+
+      // Bind event listener
+      function on(selector, type, callback) {
+        document.querySelector(selector).addEventListener(type, callback, false);
+      }
+
+      // Play
+      on('.js-play', 'click', () => {
+        player.play();
+      });
+
+      // Pause
+      on('.js-pause', 'click', () => {
+        player.pause();
+      });
+
+      // Stop
+      on('.js-stop', 'click', () => {
+        player.stop();
+      });
+
+      // Rewind
+      on('.js-rewind', 'click', () => {
+        player.rewind();
+      });
+
+      // Forward
+      on('.js-forward', 'click', () => {
+        player.forward();
+      });
+    });
+  </script>
+</body>
+
+</html>

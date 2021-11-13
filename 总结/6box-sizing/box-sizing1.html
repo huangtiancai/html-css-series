@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>box-sizing1</title>
+    <style>
+        div {
+          width: 160px;
+          height: 80px;
+          padding: 20px;
+          border: 8px solid red;
+          background: yellow;
+        }
+        .content-box {
+          box-sizing: content-box;
+          /*
+             Total width:160px + (20px * 2) + (8px * 2) = 216px;
+             Total height:80px + (20px * 2) + (8px * 2) = 136px;
+             Content box width:160px;
+             Content box height:80px;
+          */
+        }
+        .border-box {
+          box-sizing: border-box;
+          /*
+             Total width:160px;
+             Total height:80px;
+             Content box width:160px - (20px * 2) - (8px * 2) = 104px;
+             Content box height:80px - (20px * 2) - (8px * 2) = 24px;
+          */
+        }
+
+        /*溢流*/
+        p {
+          width: 400px;
+          height: 2.5em;
+          padding: 1em 1em 1em 1em;
+          border : 1px solid black;
+        }
+
+        .autoscroll {
+          overflow: auto; /*出现滚动条来让我们滚动查看所有的内容*/
+        }
+        .clipped {
+          overflow: hidden; /*溢流的内容被隐藏*/
+        }
+        .default {
+          overflow: visible; /*溢流的内容被显示在盒子的外边（这个是默认的行为）*/
+        }
+    </style>
+
+  </head>
+  <body>
+      <div class="content-box">Content box</div>
+      <br>
+      <div class="border-box">Border box</div>
+
+      <p class="autoscroll">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Mauris tempus turpis id ante mollis dignissim. Nam sed
+          dolor non tortor lacinia lobortis id dapibus nunc. Praesent
+          iaculis tincidunt augue. Integer efficitur sem eget risus
+          cursus, ornare venenatis augue hendrerit. Praesent non elit
+          metus. Morbi vel sodales ligula.
+       </p>
+       
+       <p class="clipped">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Mauris tempus turpis id ante mollis dignissim. Nam sed
+          dolor non tortor lacinia lobortis id dapibus nunc. Praesent
+          iaculis tincidunt augue. Integer efficitur sem eget risus
+          cursus, ornare venenatis augue hendrerit. Praesent non elit
+          metus. Morbi vel sodales ligula.
+       </p>
+       
+       <p class="default">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Mauris tempus turpis id ante mollis dignissim. Nam sed
+          dolor non tortor lacinia lobortis id dapibus nunc. Praesent
+          iaculis tincidunt augue. Integer efficitur sem eget risus
+          cursus, ornare venenatis augue hendrerit. Praesent non elit
+          metus. Morbi vel sodales ligula.
+       </p>
+  </body>
+</html>
