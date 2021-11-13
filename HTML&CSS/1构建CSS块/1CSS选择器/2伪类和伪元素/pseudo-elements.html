@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>伪元素 - pseudo-elements</title>
+    <style>
+      /*使用伪元素来表示元素中的一些特殊的位置 */
+
+      /*为p标签选中的内容使用样式-selection伪类
+      注意：这个伪类在火狐中需要采用另一种方式编写::-moz-selection
+    */
+      /*兼容大部分浏览器*/
+      p::selection {
+        background-color: orange;
+      }
+
+      /*兼容火狐浏览器*/
+      p::-moz-selection {
+        background-color: orange;
+      }
+
+      /*为段落首字母设置样式 - ::first-letter 或 :first-letter*/
+      p::first-letter {
+        color: red;
+      }
+      /*为段落首行设置样式 - ::first-line 或 :first-line*/
+      p::first-line {
+        background-color: aquamarine;
+      }
+      /*
+      一般before、after都需要结合content这个样式一起使用，通过content可以向before或after的位置添加一些内容
+      ::before(:before)表示元素最前边的部分 
+      ::after(:after)表示元素最后边的部分
+    */
+      p::before {
+        content: "我会出现在整个段落最前边";
+      }
+
+      p::after {
+        content: "我会出现在整个段落最后边";
+        color: brown;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="text" />
+    <p>
+      Spring框架是Java平台上的一种开源应用框架，提供具有控制反转特性的容器。尽管Spring框架自身对编程模型没有限制，但其在Java应用中的频繁使用让它备受青睐，以至于后来让它作为EJB（EnterpriseJavaBeans）模型的补充，甚至是替补。Spring框架为开发提供了一系列的解决方案，比如利用控制反转的核心特性，并通过依赖注入实现控制反转来实现管理对象生命周期容器化，利用面向切面编程进行声明式的事务管理，整合多种持久化技术管理数据访问，提供大量优秀的Web框架方便开发等等。Spring框架具有控制反转（IOC）特性，IOC旨在方便项目维护和测试，它提供了一种通过Java的反射机制对Java对象进行统一的配置和管理的方法。Spring框架利用容器管理对象的生命周期，容器可以通过扫描XML文件或类上特定Java注解来配置对象，开发者可以通过依赖查找或依赖注入来获得对象。Spring框架具有面向切面编程（AOP）框架，SpringAOP框架基于代理模式，同时运行时可配置；AOP框架主要针对模块之间的交叉关注点进行模块化。Spring框架的AOP框架仅提供基本的AOP特性，虽无法与AspectJ框架相比，但通过与AspectJ的集成，也可以满足基本需求。Spring框架下的事务管理、远程访问等功能均可以通过使用SpringAOP技术实现。Spring的事务管理框架为Java平台带来了一种抽象机制，使本地和全局事务以及嵌套事务能够与保存点一起工作，并且几乎可以在Java平台的任何环境中工作。Spring集成多种事务模板，系统可以通过事务模板、XML或Java注解进行事务配置，并且事务框架集成了消息传递和缓存等功能。Spring的数据访问框架解决了开发人员在应用程序中使用数据库时遇到的常见困难。它不仅对Java:JDBC、iBATS/MyBATIs、Hibernate、Java数据对象（JDO）、ApacheOJB和ApacheCayne等所有流行的数据访问框架中提供支持，同时还可以与Spring的事务管理一起使用，为数据访问提供了灵活的抽象。Spring框架最初是没有打算构建一个自己的WebMVC框架，其开发人员在开发过程中认为现有的StrutsWeb框架的呈现层和请求处理层之间以及请求处理层和模型之间的分离不够，于是创建了SpringMVC。
+    </p>
+  </body>
+</html>

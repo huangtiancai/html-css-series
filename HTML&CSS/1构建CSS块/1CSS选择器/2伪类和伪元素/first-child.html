@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>:first-child</title>
+    <style>
+      /*
+      :first-child CSS pseudo-class 表示在一组兄弟元素中的第一个元素
+      最初定义时，所选元素必须有一个parent。而从选择器 Level 4 开始，parent不再是必须的。
+      */
+
+      /*一组p元素内选择第一个*/
+      p:first-child {
+        color: #ddd;
+        background: tomato;
+        width: 300px;
+        padding: 5px;
+      }
+
+      /*ul 后代子元素选取第一个li元素*/
+      ul li {
+        color: blue;
+      }
+      ul li:first-child {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>this text is selected!</p>
+      <p>this text isn't selected!</p>
+      <p>this text isn't selected!</p>
+    </div>
+    <div>
+      <h2>this text isn't selected:it's not a `p`</h2>
+      <p>this text isn't selected!</p>
+    </div>
+
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>ITem 3</li>
+      <li>
+        <ul>
+          <li>Item 3.1</li>
+          <li>Item 3.2</li>
+          <li>Item 3.3</li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>

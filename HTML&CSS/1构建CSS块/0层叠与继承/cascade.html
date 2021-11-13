@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>层叠</title>
+    <style>
+        /*id/class选择器优先于element选择器,即使element选择器在后面也不会覆盖*/
+        /*比起class而言id专用性更高,红色背景色和1pixel的黑色边框都应应用于第二元素，
+        第一个元素获得灰色背景色，没有边框*/
+        #winning {
+            background-color: red;
+            border: 1px solid black;
+        }
+
+        /*第二元素不会被应用:“灰色背景色，没有边框”，即使class选择器在后面也不会覆盖*/
+        .better {
+            background-color: gray !important;
+            border: none !important;
+            /*若在这个声明后加上 !important后，尽管id具有更高的优先性，该声明也将优先于前面规则中的边界值声明。*/
+        }
+
+        /*element选择器*/
+        p {
+            background-color: blue;
+            color: white;
+            padding: 5px;
+        }
+
+        /*专用性值*/
+        /*specificity:0101 */
+        #outer a {
+            background-color: red;
+        }
+
+        /*specificity:0201 */
+        #outer #inner a {
+            background-color: blue;
+        }
+
+        /*前两个选择器正在竞争链接的背景颜色的样式——第二个赢得并使背景色为蓝色
+          第二个有一个额外的ID选择器在链中：其专用性值为201比101大
+        */
+
+
+        /*specificity:0104 */
+        #outer div ul li a {
+            color: yellow;
+        }
+
+        /*specificity:0113 */
+        #outer div ul .nav a {
+            color: white;
+        }
+
+        /*第三个和第四个选择器在链接文本颜色的样式上进行竞争——第二个选择器获胜使文本变白
+          因为缺少一个元素选择器，缺少的选择器被换成类选择器，它的值是十，而不是个位。所以专用性值为113>104。
+        */
+
+        
+        /*specificity:0024 */
+        div div li:nth-child(2) a:hover {
+            border: 10px solid black;
+        }
+
+        /*specificity:0023*/
+        div li:nth-child(2) a:hover {
+            border: 10px dashed black;
+        }
+
+        /*specificity:0033 */
+        div div .nav:nth-child(2) a:hover {
+            border: 10px double black;
+        }
+
+        /*第五个-第七个选择器在“当鼠标放在链接上出现的样式”上进行竞争-第七个选择器获胜，使边框变成双线
+          他们的专用性值分别为24 23 33
+        */
+        a {
+            display: inline-block;
+            /*不独占一行的块级元素:不独占一行+能够改变元素的height，width的值,
+            可以设置padding，margin的各个属性值，top，left，bottom，right都能够产生边距效果. */
+            line-height: 40px;
+            font-size: 20px;
+            text-decoration: none;
+            text-align: center;
+            width: 200px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+    </style>
+</head>
+
+<body>
+    <p>This is a paragraph.</p>
+    <p class="better" id="winning">One selector to rule them all!</p>
+
+    <div id="outer" class="container">
+        <div id="inner" class="container">
+            <ul>
+                <li class="nav">
+                    <a href="#">One</a>
+                </li>
+                <li class="nav">
+                    <a href="#">Two</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
