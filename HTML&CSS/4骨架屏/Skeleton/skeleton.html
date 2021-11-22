@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skeleton</title>
+  <style>
+    body {
+      background-color: #f6f6f6;
+      font-family: Helvetica;
+      font-size: 15px;
+      /* 用 Flexbox 的方式将内容上下左右居中 */
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* 设定卡片容器的样式 */
+    .card {
+      width: 320px;
+      background-color: #fff;
+      border-radius: 6px;
+      /* 设置了width后，图片大于card宽度，故设置隐藏超出的图片 */
+      overflow: hidden;
+      box-shadow: 0px 0px 6px rgba(0, 0, 0, .12);
+    }
+
+    /* 设定图片容器的样式 */
+    .image {
+      height: 200px;
+    }
+
+    .image img {
+      display: block;
+      width: 100%;
+      height: inherit;
+      object-fit: cover;
+    }
+
+    .content {
+      padding: 2rem 1.8rem;
+    }
+
+    h4 {
+      /* 上边 | 左边右边 | 下边 */
+      /* margin: 1em auto 2em; */
+      margin: 0 0 1rem;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.4rem;
+    }
+
+
+    :root {
+      --loading-grey: #ededed
+    }
+
+    /* 已经完成静态的骨架屏了 */
+
+    /* 动画的部分 */
+    /* 骨架屏的动画是好像一条光束由左至右扫过去的，所以我会将背景设定为渐层颜色 */
+    .loading .image,
+    .loading h4,
+    .loading .description {
+      /* 有三个位置需要加入灰色的骨架，分别是图片、标题和内文 */
+      /* 将这三个选择器的背景颜色都设定为浅灰色 */
+      background-color: var(--loading-grey);
+
+      /* 由全透明的白色，位置在 40%；渐变为半透明的白色，位置在 50%；再到全透明的白色，位置在 60%
+      /* 再补上基础的背景颜色，浅灰色 */
+      background: linear-gradient(100deg,
+          rgba(255, 255, 255, 0) 40%,
+          rgba(255, 255, 255, .5) 50%,
+          rgba(255, 255, 255, 0) 60%) var(--loading-grey);
+
+      /* 将这个背景的宽度，拉成两倍大小，设定为 200%，高度维持是 100%
+         通过 background-position 控制背景的位移，从而达到扫光的效果
+
+         当 background-position-x 设定为 100%，光的部份会在左边，而设定为 0% 的话，光的部份会在右边，
+         所以由大的数字改变到小的数字就可以实现左至右的扫光
+      */
+      background-size: 200% 100%;
+      /* background-position-x: 100%; */
+      background-position-x: 120%;
+
+      /* 想它扫入的时候快一点，间隔时间稍多一点，可以直接将原来的 background-position-x 更改为更大的值，例如 180%，这样背景就因为需要移动更长的距离，从而达到效果 */
+      /* background-position-x: 180%; */
+
+      /* 加入动画的设定，设定为 1 秒，动画名称是 loading，加速度是 ease-in-out，重覆次数是无限 infinite */
+      animation: 1s loading ease-in-out infinite;
+    }
+
+    @keyframes loading {
+      to {
+        background-position-x: -20%;
+      }
+    }
+
+
+    /* 标题和内文需要个别设定一些样式 */
+    .loading h4 {
+      min-height: 1.6rem;
+      border-radius: 4px;
+      animation-delay: .05s;
+    }
+
+    .loading .description {
+      min-height: 4rem;
+      border-radius: 4px;
+      animation-delay: .06s;
+    }
+
+
+    /* 光束是斜的，如何可以做到三个灰色位置的光束看起来是同一条呢 
+       延迟一下标题和内文的动划开始时间就可以了
+    */
+  </style>
+</head>
+
+<body>
+  <div class="card">
+
+    <div class="image">
+      <img src="https://blog.huangtiancai.cn/upload/imgs/cover/cover3.jpg" alt="">
+    </div>
+    <div class="content">
+      <h4>Skeleton</h4>
+      <div class="description">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex quasi enim facere commodi omnis...
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card loading">
+
+    <div class="image">
+    </div>
+    <div class="content">
+      <h4></h4>
+      <div class="description"></div>
+    </div>
+
+  </div>
+
+</body>
+<script src="skeleton.js"></script>
+
+</html>
