@@ -28,6 +28,7 @@
       box-shadow: 0px 0px 6px rgba(0, 0, 0, .12);
     }
 
+
     /* 设定图片容器的样式 */
     .image {
       height: 200px;
@@ -82,7 +83,7 @@
 
       /* 将这个背景的宽度，拉成两倍大小，设定为 200%，高度维持是 100%
          通过 background-position 控制背景的位移，从而达到扫光的效果
-
+        
          当 background-position-x 设定为 100%，光的部份会在左边，而设定为 0% 的话，光的部份会在右边，
          所以由大的数字改变到小的数字就可以实现左至右的扫光
       */
@@ -96,6 +97,7 @@
       /* 加入动画的设定，设定为 1 秒，动画名称是 loading，加速度是 ease-in-out，重覆次数是无限 infinite */
       animation: 1s loading ease-in-out infinite;
     }
+    
 
     @keyframes loading {
       to {
