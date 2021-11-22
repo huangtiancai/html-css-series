@@ -20,4 +20,4 @@ setTimeout(() => {
 
   // 移除loading
   sleleton.classList.remove('loading')
-},3000)
+},10000)
